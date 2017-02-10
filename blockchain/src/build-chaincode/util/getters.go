@@ -126,4 +126,3 @@ func GetAllTransactions(stub shim.ChaincodeStubInterface) ([]entities.Transactio
 
 	return transactions, nil
 }
-
