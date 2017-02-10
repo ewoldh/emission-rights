@@ -26,7 +26,7 @@ type Transaction struct {
 	Price	 	float64 `json:"price"`
 	Volume     	int64 	`json:"volume"`
 	TransactionDate int64 	`json:"transactionDate"`
-	Seller		string  `json:"company"`
+	Seller		string  `json:"seller"`
 	Buyer		string  `json:"buyer"`
 	RequestStatus	string	`json:"requestStatus"`
 }

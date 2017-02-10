@@ -43,8 +43,8 @@ func GetThingsByUserID(stub shim.ChaincodeStubInterface, userID string) ([]strin
 	return thingIDs, nil
 }
 
-func GetUser(stub shim.ChaincodeStubInterface, username string) (entities.User, error) {
-	userAsBytes, err := stub.GetState(username)
+func GetUser(stub shim.ChaincodeStubInterface, userID string) (entities.User, error) {
+	userAsBytes, err := stub.GetState(userID)
 	if err != nil {
 		return entities.User{}, errors.New("Could not retrieve information for this user")
 	}

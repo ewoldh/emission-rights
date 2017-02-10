@@ -7,11 +7,11 @@ export class User {
     private _userID: string;
     private _salt: string;
     private _hash: string;
-    private _username: string;
+    private _company: string;
 
-    public constructor(userID: string, password: string, username: string) {
+    public constructor(userID: string, password: string, company: string) {
         this._userID = userID;
-        this._username = username;
+        this._company = company;
         this._salt = crypto.randomBytes(16).toString('hex');
         this._hash = new Password(password, this.salt).toHash();
     }
@@ -28,8 +28,8 @@ export class User {
         return this._hash;
     }
 
-    public get username(): string {
-        return this._username;
+    public get company(): string {
+        return this._company;
     }
 
     public toJSON(): any {
@@ -37,7 +37,7 @@ export class User {
             'userID': this.userID,
             'salt': this.salt,
             'hash': this.hash,
-            'username': this.username
+            'company': this.company
         };
     }
 }
