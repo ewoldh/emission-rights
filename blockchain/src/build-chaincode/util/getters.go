@@ -43,8 +43,8 @@ func GetThingsByUserID(stub shim.ChaincodeStubInterface, userID string) ([]strin
 	return thingIDs, nil
 }
 
-func GetUser(stub shim.ChaincodeStubInterface, username string) (entities.User, error) {
-	userAsBytes, err := stub.GetState(username)
+func GetUser(stub shim.ChaincodeStubInterface, userID string) (entities.User, error) {
+	userAsBytes, err := stub.GetState(userID)
 	if err != nil {
 		return entities.User{}, errors.New("Could not retrieve information for this user")
 	}
@@ -81,3 +81,25 @@ func GetAllUsers(stub shim.ChaincodeStubInterface) ([]entities.User, error) {
 
 	return users, nil
 }
+func GetETAAccountByUserID(stub shim.ChaincodeStubInterface, userID string) (entities.ETAAccount, error) {
+	user, err := GetUser(stub, userID)
+	if err != nil {
+		return entities.ETAAccount{}, errors.New("Could not retrieve user account" + err.Error())
+	}
+
+	etaAccountAsBytes, err := stub.GetState(user.ETAAccountID)
+	if err != nil {
+		return entities.ETAAccount{}, errors.New("Could not retrieve eta user acoount" + err.Error())
+	}
+	var etaAccount entities.ETAAccount
+	err = json.Unmarshal(etaAccountAsBytes, &etaAccount)
+	if err != nil {
+		return entities.ETAAccount{}, errors.New("Could not retrieve eta user acoount" + err.Error)
+	}
+
+	return etaAccount, nil
+}
+
+
+
+

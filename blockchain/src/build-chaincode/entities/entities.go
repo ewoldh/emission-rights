@@ -15,10 +15,11 @@ type TestDataElement interface {
 
 type User struct {
 	UserID   	string 	`json:"userID"`
+	ETAAccountID	string  `json:"etaAccountID"`
 	Username 	string 	`json:"username"`
 	Salt     	string 	`json:"salt"`
 	Hash     	string 	`json:"hash"`
-	Company		string  `json:"company"`
+	CompanyID	string  `json:"companyID"`
 }
 
 type Transaction struct {
@@ -40,7 +41,6 @@ type Company struct {
 
 type ETAAccount struct {
 	ETAAccountID	      string    `json:"etaAccountID"`
-	UserID  	      string 	`json:"userID"`
 	CompanyID 	      string    `json:"companyID"`
 	Balance     	      float64 	`json:"balance"`
 	AmountOfTransactions  int64 	`json:"amountOfTransactions"`
