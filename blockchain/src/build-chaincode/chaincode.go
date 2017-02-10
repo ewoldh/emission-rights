@@ -38,7 +38,6 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 		return nil, t.addTestdata(stub, args[0])
 	} else if functionName == "createThing" {
 		thingAsJSON := args[0]
-
 		var thing entities.Thing
 		if err := json.Unmarshal([]byte(thingAsJSON), &thing); err != nil {
 			return nil, errors.New("Error while unmarshalling thing, reason: " + err.Error())
