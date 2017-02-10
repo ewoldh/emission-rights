@@ -8,12 +8,14 @@ import (
 
 var UsersIndexName = "_users"
 var ThingsIndexName = "_things"
-var TransactionsIndexName = "_transactions"
+var TransactionIndexName = "_transaction"
+var ETAAccountIndexName = "_etaAccount"
 
 var indexNames = []string{
 	UsersIndexName,
 	ThingsIndexName,
-	TransactionsIndexName,
+	TransactionIndexName,
+	ETAAccountIndexName,
 }
 
 func WriteIDToBlockchainIndex(stub shim.ChaincodeStubInterface, indexName string, id string) ([]byte, error) {

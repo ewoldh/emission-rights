@@ -39,6 +39,7 @@ type Company struct {
 }
 
 type ETAAccount struct {
+	ETAAccountID	      string    `json:"etaAccountID"`
 	UserID  	      string 	`json:"userID"`
 	CompanyID 	      string    `json:"companyID"`
 	Balance     	      int64 	`json:"balance"`
@@ -46,9 +47,10 @@ type ETAAccount struct {
 }
 
 type BankAccount struct {
-	UserID    	string 	`json:"userID"`
-	CompanyID 	string  `json:"companyID"`
-	AccountBalance  float64 `json:"accountBalance"`
+	BankAccountID	  int64   `json:"bankAccountID"`
+	UserID    	  string  `json:"userID"`
+	CompanyID 	  string  `json:"companyID"`
+	AccountBalance    float64 `json:"accountBalance"`
 }
 
 type Thing struct {
