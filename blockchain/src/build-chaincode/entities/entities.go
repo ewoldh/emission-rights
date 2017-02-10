@@ -27,7 +27,7 @@ type Transaction struct {
 	Price	 	float64 `json:"price"`
 	Volume     	int64 	`json:"volume"`
 	TransactionDate int64 	`json:"transactionDate"`
-	Seller		string  `json:"company"`
+	Seller		string  `json:"seller"`
 	Buyer		string  `json:"buyer"`
 	RequestStatus	string	`json:"requestStatus"`
 }
@@ -42,7 +42,7 @@ type Company struct {
 type ETAAccount struct {
 	ETAAccountID	      string    `json:"etaAccountID"`
 	CompanyID 	      string    `json:"companyID"`
-	Balance     	      float64 	`json:"balance"`
+	Balance     	      int64 	`json:"balance"`
 	AmountOfTransactions  int64 	`json:"amountOfTransactions"`
 }
 

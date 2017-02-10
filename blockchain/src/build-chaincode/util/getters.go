@@ -100,6 +100,30 @@ func GetETAAccountByUserID(stub shim.ChaincodeStubInterface, userID string) (ent
 	return etaAccount, nil
 }
 
+func GetAllTransactions(stub shim.ChaincodeStubInterface) ([]entities.Transaction, error) {
+	transactionsIndex, err := GetIndex(stub, TransactionsIndexName)
+	if err != nil {
+		return []entities.Transaction{}, errors.New("Could not retrieve transactionIndex, reason: " + err.Error())
+	}
 
+	var transactions []entities.Transaction
+	for _, transactionID := range transactionsIndex {
+		transactionAsBytes, err := stub.GetState(transactionID)
+		if err != nil {
+			return []entities.Transaction{}, errors.New("Could not retrieve transaction with ID: " + transactionID + ", reason: " + err.Error())
+		}
 
+		var transaction entities.Transaction
+		err = json.Unmarshal(transactionAsBytes, &transaction)
+		if err != nil {
+			return []entities.Transaction{}, errors.New("Error while unmarshalling transaction, reason: " + err.Error())
+		}
+
+		if (transaction.RequestStatus != "SOLD") {
+			transactions = append(transactions, transaction)
+		}
+	}
+
+	return transactions, nil
+}
 
