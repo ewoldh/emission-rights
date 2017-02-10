@@ -16,9 +16,9 @@ type TestDataElement interface {
 type User struct {
 	UserID   	string 	`json:"userID"`
 	Username 	string 	`json:"username"`
-	Password 	string 	`json:"password"`
 	Salt     	string 	`json:"salt"`
 	Hash     	string 	`json:"hash"`
+	Company		string  `json:"company"`
 }
 
 type Thing struct {
