@@ -21,6 +21,36 @@ type User struct {
 	Company		string  `json:"company"`
 }
 
+type Transaction struct {
+	TransactionID  	string 	`json:"transactionID"`
+	Price	 	float64 `json:"price"`
+	Volume     	int64 	`json:"volume"`
+	TransactionDate int64 	`json:"transactionDate"`
+	Seller		string  `json:"company"`
+	Buyer		string  `json:"buyer"`
+	RequestStatus	string	`json:"requestStatus"`
+}
+
+type Company struct {
+	CompanyID  	string 	`json:"companyID"`
+	CompanyName 	string  `json:"companyName"`
+	Department     	string 	`json:"department"`
+	ApprovalStatus  string 	`json:"approvalStatus"`
+}
+
+type ETAAccount struct {
+	UserID  	      string 	`json:"userID"`
+	CompanyID 	      string    `json:"companyID"`
+	Balance     	      float64 	`json:"balance"`
+	AmountOfTransactions  int64 	`json:"amountOfTransactions"`
+}
+
+type BankAccount struct {
+	UserID    	string 	`json:"userID"`
+	CompanyID 	string  `json:"companyID"`
+	AccountBalance  float64 `json:"accountBalance"`
+}
+
 type Thing struct {
 	ThingID      	string 	`json:"thingID"`
 	SomeProperty 	string 	`json:"someProperty"`
