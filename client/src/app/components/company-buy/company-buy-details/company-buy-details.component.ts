@@ -12,4 +12,13 @@ export class CompanyBuyDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
+  buttonClicked(button: string) {
+    switch (button) {
+      case 'cancel':
+        console.log('clicked cancel');
+      case 'buy':
+        console.log('clicked buy');
+    }
+  }
+
 }
