@@ -24,8 +24,16 @@
     <div class="pointer-right"></div>
     <div class="under-line">
       <div class="pointer-left"></div>
+    </div>
+    <div class="active-line"
+      (mouseenter)="this.leftBuy[0] = '26px'"
+      (mouseleave)="this.leftBuy[0] = '-26px'"
+    >
+      <div class="buy" [ngStyle]="{left: this.leftBuy[0]}">B U Y </div>
       <div class="taper-effect"></div>
     </div>
+
+    <app-company-buy-details></app-company-buy-details>
 
   </div>
 
