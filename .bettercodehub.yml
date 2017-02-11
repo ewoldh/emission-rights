@@ -1,0 +1,10 @@
+exclude:
+- /server/src/blockchain/.*
+- /server/src/middleware/.*
+- /server/src/utils/.*
+component_depth: 1
+languages:
+- go
+- javascript
+- script
+- typescript
