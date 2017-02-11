@@ -22,4 +22,11 @@ export class EtaAccountService {
       .get(this.actionUrl + '/' + user.userID, {headers: this.headers})
       .map(res => res.json());
   }
+
+  public postEtaAccount(amountValue:number){
+    return this._http.post(this.actionUrl, {amount: amountValue}, {headers: this.headers})
+      .map(res => res.json())
+  }
+
+
 }
