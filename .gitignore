@@ -3,3 +3,6 @@
 *.log
 npm-debug.log.*
 server/server
+client/node_modules
+server/node_modules
+node_modules
