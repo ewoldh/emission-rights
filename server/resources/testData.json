@@ -74,19 +74,19 @@
   "bankAccounts":[
     {
       "bankAccountID":"12345",
-      "userID":"1234",
+      "userID":"john",
       "companyID":"4321",
       "accountBalance":100000
     },
     {
       "bankAccountID":"23456",
-      "userID":"2345",
+      "userID":"erika",
       "companyID":"5432",
       "accountBalance":200000
     },
     {
       "bankAccountID":"45678",
-      "userID":"4567",
+      "userID":"bert",
       "companyID":"7654",
       "accountBalance":50000
     }
@@ -124,8 +124,8 @@
       "volume": 600,
       "sellDate": 1486799555357,
       "DateOfTransaction": 0,
-      "seller": "4567",
-      "buyer": "2345",
+      "seller": "bert",
+      "buyer": "jane",
       "status": "requested",
       "transparent": true
     },
@@ -135,8 +135,8 @@
       "volume": 2000,
       "sellDate": 1486799555357,
       "DateOfTransaction": 1486799555357,
-      "seller": "2345",
-      "buyer": "1234",
+      "seller": "jane",
+      "buyer": "john",
       "status": "requested",
       "transparent": true
     },
@@ -146,8 +146,8 @@
       "volume": 50,
       "sellDate": 1486799555357,
       "DateOfTransaction": 1486799600000,
-      "seller": "1234",
-      "buyer": "2345",
+      "seller": "john",
+      "buyer": "jane",
       "status": "Sold",
       "transparent": true
     },
@@ -157,8 +157,8 @@
       "volume": 8000,
       "sellDate": 1486799555357,
       "DateOfTransaction": 0,
-      "seller": "1234",
-      "buyer": "2345",
+      "seller": "john",
+      "buyer": "erika",
       "status": "requested",
       "transparent": true
     }
