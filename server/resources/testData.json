@@ -32,7 +32,7 @@
       "attributes": [
         {
           "userID": "alice",
-          "role": "government"
+          "role": "authority"
         }
       ]
     },
@@ -122,7 +122,8 @@
       "transactionID": "sdfgdfg",
       "price": 0.86,
       "volume": 600,
-      "transactionDate": 1486799555357,
+      "sellDate": 1486799555357,
+      "tradeDate": 0,
       "seller": "4567",
       "buyer": "2345",
       "status": "requested",
@@ -132,9 +133,10 @@
       "transactionID": "dfghdfgh",
       "price": 0.76,
       "volume": 2000,
-      "transactionDate": 1486799555357,
+      "sellDate": 1486799555357,
+      "tradeDate": 1486799555357,
       "seller": "2345",
-      "buyer": "2345",
+      "buyer": "1234",
       "status": "requested",
       "transparent": true
     },
@@ -142,17 +144,19 @@
       "transactionID": "fjgjgfjfg",
       "price": 0.90,
       "volume": 50,
-      "transactionDate": 1486799555357,
+      "sellDate": 1486799555357,
+      "tradeDate": 1486799600000,
       "seller": "1234",
       "buyer": "2345",
-      "status": "requested",
+      "status": "Sold",
       "transparent": true
     },
     {
       "transactionID": "asdfasdf",
       "price": 0.86,
       "volume": 8000,
-      "transactionDate": 1486799555357,
+      "sellDate": 1486799555357,
+      "tradeDate": 0,
       "seller": "1234",
       "buyer": "2345",
       "status": "requested",

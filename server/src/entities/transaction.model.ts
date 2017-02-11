@@ -4,24 +4,25 @@ import * as shortID from 'shortid';
 
 export class Transaction {
   private _transactionID: string;
-  private _transactionDate: number;
+  private _sellDate: number;
 
   public constructor(private _price: number,
                      private _volume: number,
                      private _seller: string,
+                     private _dateOfTransaction: number,
                      private _buyer: string,
                      private _requestStatus: string,
                      private _transparent: boolean) {
-    this._transactionID   = shortID.generate();
-    this._transactionDate = new Date().getTime();
+    this._transactionID = shortID.generate();
+    this._sellDate      = new Date().getTime();
   }
 
   public get transactionID(): string {
     return this._transactionID;
   }
 
-  public get transactionDate(): number {
-    return this._transactionDate;
+  public get sellDate(): number {
+    return this._sellDate;
   }
 
   public get price(): number {
@@ -30,6 +31,10 @@ export class Transaction {
 
   public get volume(): number {
     return this._volume;
+  }
+
+  public get dateOfTransaction(): number {
+    return this._dateOfTransaction;
   }
 
   public get seller(): string {
@@ -51,9 +56,10 @@ export class Transaction {
   public toJSON(): any {
     return {
       'transactionID':   this.transactionID,
-      'price':           this.transactionDate,
+      'price':           this.sellDate,
       'volume':          this.price,
       'transactionDate': this.volume,
+      'buyDate':         this.dateOfTransaction,
       'seller':          this.seller,
       'buyer':           this.buyer,
       'requestStatus':   this.requestStatus,

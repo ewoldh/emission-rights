@@ -7,15 +7,6 @@ import (
 	"build-chaincode/entities"
 )
 
-func GetCurrentBlockchainUser(stub shim.ChaincodeStubInterface) (entities.User, error) {
-	userIDAsBytes, err := stub.ReadCertAttribute("userID")
-	if err != nil {
-		return entities.User{}, errors.New("Could not retrieve user by certificate. Reason: " + err.Error())
-	}
-
-	return GetUser(stub, string(userIDAsBytes))
-}
-
 func GetUser(stub shim.ChaincodeStubInterface, userID string) (entities.User, error) {
 	userAsBytes, err := stub.GetState(userID)
 	if err != nil {
