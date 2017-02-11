@@ -1,6 +1,10 @@
-$pink: #FF00FF;
+@import 'fonts';
+@import 'variables';
 
-h2 {
-    color: $pink;
+* {
+    font-family: "roboto";
 }
 
+body, html {
+    background-color: $backgroundGreen;
+}
