@@ -24,7 +24,7 @@ func AddTransaction(stub shim.ChaincodeStubInterface, transaction entities.Trans
 		return errors.New("error while checking certificate attribute, reason: " + err.Error())
 	}
 
-	etaAccount, err := GetETAAccountByUserID(stub, userID)
+	etaAccount, err := GetETAAccountByUserID(stub, string(userID))
 	if err != nil {
 		return errors.New("error getting account, reason: " + err.Error())
 	}
@@ -34,7 +34,7 @@ func AddTransaction(stub shim.ChaincodeStubInterface, transaction entities.Trans
 	}
 
 	etaAccount.Balance = etaAccount.Balance - transaction.Volume
-	transaction.Seller = userID
+	transaction.Seller = string(userID)
 
 	transactionAsBytes, err := json.Marshal(transaction)
 	if err != nil {
