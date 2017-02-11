@@ -5,13 +5,13 @@ import {CORSMiddleware} from '../../middleware/CORSMiddleware';
 import {LoggerFactory} from '../../utils/LoggerFactory';
 import {Service} from 'typedi';
 
-@JsonController('/etaAccount')
+@JsonController('/etaAccounts')
 @UseBefore(UserAuthenticatorMiddleware, CORSMiddleware)
 @Service()
 export class ETAAccountController {
   public constructor(private loggerFactory: LoggerFactory) { }
 
-  @Get('/byUser/:id')
+  @Get('/:id')
   public getETAAccountByUserID(@Param('id') userID: string, @Req() request: any): any {
     let enrollmentID = new JSONWebToken(request).getUserID();
     return request.blockchain.query('getETAAccountByUserID', [userID], enrollmentID);

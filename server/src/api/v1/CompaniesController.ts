@@ -11,9 +11,10 @@ import {Service} from 'typedi';
 export class CompaniesController {
   public constructor(private loggerFactory: LoggerFactory) { }
 
-  @Get('/all')
+  @Get('/')
   public getAll(@Req() request: any): any {
     let enrollmentID = new JSONWebToken(request).getUserID();
+    console.log('it was here');
     return request.blockchain.query('getAllCompanies', [''], enrollmentID);
   }
 

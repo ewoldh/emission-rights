@@ -4,13 +4,10 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {routing, appRoutingProviders} from './app.routing';
 import {Configuration} from './app.constants'
-
 import {AuthGuard} from './guards/index';
-
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/login/login.component';
 import {ThingsComponent} from './components/things/things.component';
-
 import {ThingService} from './services/thing.service'
 import {AuthenticationService} from './services/authentication.service';
 import { HeaderComponent } from './components/emission-header/emission-header.component';
@@ -19,6 +16,9 @@ import { CompanyBuyFilterComponent } from './components/company-buy/company-buy-
 import { CompanyBuyRightsComponent } from './components/company-buy/company-buy-rights/company-buy-rights.component';
 import { CompanyBuyDetailsComponent } from './components/company-buy/company-buy-details/company-buy-details.component'
 import {LandingComponent} from "./components/landing/landing.component";
+import {CompanyService} from "./services/company.service";
+import {EtaAccountService} from "./services/eta-account.service";
+import {TransactionService} from "./services/transaction.service";
 
 @NgModule({
   declarations: [
@@ -43,7 +43,10 @@ import {LandingComponent} from "./components/landing/landing.component";
     Configuration,
     AuthenticationService,
     AuthGuard,
-    ThingService
+    ThingService,
+    CompanyService,
+    EtaAccountService,
+    TransactionService,
   ],
   bootstrap: [AppComponent]
 })
