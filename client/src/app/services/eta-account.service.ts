@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import {Http} from "@angular/http";
-import {Configuration} from "../app.constants";
-import {AuthenticationService} from "./authentication.service";
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
+import {Configuration} from '../app.constants';
+import {AuthenticationService} from './authentication.service';
 
 @Injectable()
 export class EtaAccountService {
@@ -10,10 +10,9 @@ export class EtaAccountService {
 
   constructor(private _http: Http,
               private _configuration: Configuration,
-              private _authenticationService: AuthenticationService
-              ) {
+              private _authenticationService: AuthenticationService) {
     this.actionUrl = _configuration.Server + 'api/v1/etaAccounts';
-    this.headers = _authenticationService.createAuthorizationHeader();
+    this.headers   = _authenticationService.createAuthorizationHeader();
   }
 
   public getEtaAccountUserById() {
@@ -23,10 +22,9 @@ export class EtaAccountService {
       .map(res => res.json());
   }
 
-  public postEtaAccount(amountValue:number){
+  public postEtaAccount(amountValue: number) {
     return this._http.post(this.actionUrl, {amount: amountValue}, {headers: this.headers})
-      .map(res => res.json())
+      .map(res => res.json());
   }
-
 
 }

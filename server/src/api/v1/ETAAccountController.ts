@@ -23,7 +23,7 @@ export class ETAAccountController {
 
   @Post('/')
   public addETAToTradePlatform(@Body() etaPostValues: any, @Req() request: any): any {
-    let enrollmentID = new JSONWebToken(request).getUserID();
-    return request.blockchain.invoke('createETAs', [JSON.stringify(etaPostValues)], "jane");
+    //let enrollmentID = new JSONWebToken(request).getUserID();
+    return request.blockchain.invoke('createETAs', [JSON.stringify(etaPostValues)], 'jane');
   }
 }
