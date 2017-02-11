@@ -1,31 +1,79 @@
-.left-side-header {
+@import '../../../assets/styles/variables';
 
+.top-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1400px;
+  height: 104px;
+  margin: 0;
+  padding: 0;
+  background-color: $white;
+  box-shadow: 2px 2px 5px $inactiveItem;
 
+  .left-side-header {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 340px;
+    height: 64px;
 
-  .left-image {
-
-
-  }
-
-  .page-information {
-
-    .page-information-above {
-
+    .left-image {
+      height: 64px;
+      width: auto;
     }
 
-    .page-information-under {
+    .page-information {
+      position: absolute;
+      left: 60px;
+      top: 0;
+      font-size: 30px;
+      color: $darkGreen;
 
+      .page-information-above {
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 25px;
+        line-height: 25px;
+        width: calc(100% - 60px);
+        height: 34px;
+        border-bottom: 4px solid $darkGreen;
+        font-weight: 300;
+
+        .content {
+          padding: 8px;
+        }
+      }
+
+      .page-information-under {
+        margin: 0;
+        position: absolute;
+        top: 34px ;
+        left: 0;
+        padding-left: 8px;
+        font-size: 14px;
+        font-weight: 100;
+        color: $inputGreen;
+      }
     }
-
   }
-
 }
 
-.menu-item {
+.right-side-header {
+  .menu-item {
+    display: inline-block;
+    font-size: 50px;
+    color: green;
+    margin: 0px 15px 30px 15px;
 
-  display: inline-block;
-  font-size: 50px;
-  color: green;
-  margin: 0px 15px 30px 15px;
+    &.active {
+      color: $darkGreen;
+      border-bottom: 4px solid $darkGreen;
 
+    }
+
+  }
 }
