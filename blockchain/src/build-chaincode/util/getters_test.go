@@ -41,7 +41,7 @@ func (suite *GettersTestSuite) Test_CanGetUserWithoutError() {
 
 func (suite *GettersTestSuite) Test_CantGetUserWithWrongUsername() {
 	user, err := GetUser(suite.stub, "wrongUserName")
-	suite.EqualError(err, "User with id: \"wrongUserName\" is not found in the chaincode")
+	suite.EqualError(err, "Cannot unmarshall User with id wrongUserName, reason: unexpected end of JSON input")
 
 	suite.EqualValues(user, entities.User{})
 }

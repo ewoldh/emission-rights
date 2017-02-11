@@ -15,10 +15,23 @@ func GetUser(stub shim.ChaincodeStubInterface, userID string) (entities.User, er
 
 	var user entities.User
 	if err = json.Unmarshal(userAsBytes, &user); err != nil {
-		return entities.User{}, errors.New("Cannot get user, reason: " + err.Error())
+		return entities.User{}, errors.New("Cannot unmarshall User with id " + userID + ", reason: " + err.Error())
 	}
 
 	return user, nil
+}
+func GetTransaction(stub shim.ChaincodeStubInterface, transactionID string) (entities.Transaction, error) {
+	transactionAsBytes, err := stub.GetState(transactionID)
+	if err != nil {
+		return entities.Transaction{}, errors.New("Could not retrieve information for this user")
+	}
+
+	transaction := entities.Transaction{}
+	if err = json.Unmarshal(transactionAsBytes, &transaction); err != nil {
+		return entities.Transaction{}, errors.New("Cannot get user, reason: " + err.Error())
+	}
+
+	return transaction, nil
 }
 
 func GetCompanyByID(stub shim.ChaincodeStubInterface, companyID string) (entities.Company, error) {
@@ -43,15 +56,9 @@ func GetAllUsers(stub shim.ChaincodeStubInterface) ([]entities.User, error) {
 
 	var users []entities.User
 	for _, userID := range usersIndex {
-		userAsBytes, err := stub.GetState(userID)
+		user, err := GetUser(stub, userID)
 		if err != nil {
-			return []entities.User{}, errors.New("Could not retrieve user with ID: " + userID + ", reason: " + err.Error())
-		}
-
-		var user entities.User
-		err = json.Unmarshal(userAsBytes, &user)
-		if err != nil {
-			return []entities.User{}, errors.New("Error while unmarshalling user, reason: " + err.Error())
+			return []entities.User{}, errors.New("Could not retreive user, reason: " + err.Error())
 		}
 
 		users = append(users, user)
@@ -105,15 +112,9 @@ func GetAllTransactions(stub shim.ChaincodeStubInterface) ([]entities.Transactio
 
 	var transactions []entities.Transaction
 	for _, transactionID := range transactionsIndex {
-		transactionAsBytes, err := stub.GetState(transactionID)
+		transaction, err := GetTransaction(stub, transactionID)
 		if err != nil {
 			return []entities.Transaction{}, errors.New("Could not retrieve transaction with ID: " + transactionID + ", reason: " + err.Error())
-		}
-
-		var transaction entities.Transaction
-		err = json.Unmarshal(transactionAsBytes, &transaction)
-		if err != nil {
-			return []entities.Transaction{}, errors.New("Error while unmarshalling transaction, reason: " + err.Error())
 		}
 
 		transactions = append(transactions, transaction)
