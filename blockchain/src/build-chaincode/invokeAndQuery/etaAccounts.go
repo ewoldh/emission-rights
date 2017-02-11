@@ -9,7 +9,7 @@ import (
 )
 
 func GetETAAccountByUserID(stub shim.ChaincodeStubInterface, userID string) (entities.ETAAccount, error) {
-	user, err := util.GetUser(stub, userID)
+	user, err := util.GetUserByID(stub, userID)
 	if err != nil {
 		return entities.ETAAccount{}, errors.New("Could not retrieve user account" + err.Error())
 	}

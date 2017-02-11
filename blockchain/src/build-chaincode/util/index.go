@@ -7,10 +7,10 @@ import (
 )
 
 var UsersIndexName = "_users"
-var TransactionsIndexName = "_transaction"
-var CompaniesIndexName = "_company"
-var ETAAccountsIndexName = "_etaAccount"
-var BankAccountsIndexName = "_bankAccount"
+var TransactionsIndexName = "_transactions"
+var CompaniesIndexName = "_companies"
+var ETAAccountsIndexName = "_etaAccounts"
+var BankAccountsIndexName = "_bankAccounts"
 
 var indexNames = []string{
 	UsersIndexName,

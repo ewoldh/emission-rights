@@ -66,14 +66,14 @@ func (t *Chaincode) Query(stub shim.ChaincodeStubInterface, functionName string,
 
 func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionName string, args []string) (interface{}, error) {
 	if functionName == "getUser" {
-		user, err := util.GetUser(stub, args[0])
+		user, err := util.GetUserByID(stub, args[0])
 		if err != nil {
 			return nil, err
 		}
 
 		return user, nil
 	} else if functionName == "authenticateAsUser" {
-		user, err := util.GetUser(stub, args[0])
+		user, err := util.GetUserByID(stub, args[0])
 		if err != nil {
 			logger.Infof("User with id %v not found.", args[0])
 		}

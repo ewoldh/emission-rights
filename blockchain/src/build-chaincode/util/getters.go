@@ -7,7 +7,7 @@ import (
 	"build-chaincode/entities"
 )
 
-func GetUser(stub shim.ChaincodeStubInterface, userID string) (entities.User, error) {
+func GetUserByID(stub shim.ChaincodeStubInterface, userID string) (entities.User, error) {
 	userAsBytes, err := stub.GetState(userID)
 	if err != nil {
 		return entities.User{}, errors.New("Could not retrieve information for this user")
@@ -20,7 +20,7 @@ func GetUser(stub shim.ChaincodeStubInterface, userID string) (entities.User, er
 
 	return user, nil
 }
-func GetTransaction(stub shim.ChaincodeStubInterface, transactionID string) (entities.Transaction, error) {
+func GetTransactionByID(stub shim.ChaincodeStubInterface, transactionID string) (entities.Transaction, error) {
 	transactionAsBytes, err := stub.GetState(transactionID)
 	if err != nil {
 		return entities.Transaction{}, errors.New("Could not retrieve information for this user")
@@ -28,7 +28,7 @@ func GetTransaction(stub shim.ChaincodeStubInterface, transactionID string) (ent
 
 	transaction := entities.Transaction{}
 	if err = json.Unmarshal(transactionAsBytes, &transaction); err != nil {
-		return entities.Transaction{}, errors.New("Cannot get user, reason: " + err.Error())
+		return entities.Transaction{}, errors.New("Cannot unmarshall transaction with id " + transactionID + ", reason: " + err.Error())
 	}
 
 	return transaction, nil
@@ -42,10 +42,29 @@ func GetCompanyByID(stub shim.ChaincodeStubInterface, companyID string) (entitie
 
 	var company entities.Company
 	if err = json.Unmarshal(companyAsBytes, &company); err != nil {
-		return entities.Company{}, errors.New("Cannot get user, reason: " + err.Error())
+		return entities.Company{}, errors.New("Cannot unmarshall company with id " + companyID + ", reason: " + err.Error())
 	}
 
 	return company, nil
+}
+
+func GetETAAccountByUserID(stub shim.ChaincodeStubInterface, userID string) (entities.ETAAccount, error) {
+	user, err := GetUserByID(stub, userID)
+	if err != nil {
+		return entities.ETAAccount{}, errors.New("Could not retrieve user account with id: "+ userID +", reason: " + err.Error())
+	}
+
+	etaAccountAsBytes, err := stub.GetState(user.ETAAccountID)
+	if err != nil {
+		return entities.ETAAccount{}, errors.New("Could not retrieve eta acoount of the user" + err.Error())
+	}
+	var etaAccount entities.ETAAccount
+	err = json.Unmarshal(etaAccountAsBytes, &etaAccount)
+	if err != nil {
+		return entities.ETAAccount{}, errors.New("Cannot unmarshall eta account with id " + etaAccount.ETAAccountID + ", reason: " + err.Error())
+	}
+
+	return etaAccount, nil
 }
 
 func GetAllUsers(stub shim.ChaincodeStubInterface) ([]entities.User, error) {
@@ -56,7 +75,7 @@ func GetAllUsers(stub shim.ChaincodeStubInterface) ([]entities.User, error) {
 
 	var users []entities.User
 	for _, userID := range usersIndex {
-		user, err := GetUser(stub, userID)
+		user, err := GetUserByID(stub, userID)
 		if err != nil {
 			return []entities.User{}, errors.New("Could not retreive user, reason: " + err.Error())
 		}
@@ -85,25 +104,6 @@ func GetAllCompanies(stub shim.ChaincodeStubInterface) ([]entities.Company, erro
 	return companies, nil
 }
 
-func GetETAAccountByUserID(stub shim.ChaincodeStubInterface, userID string) (entities.ETAAccount, error) {
-	user, err := GetUser(stub, userID)
-	if err != nil {
-		return entities.ETAAccount{}, errors.New("Could not retrieve user account" + err.Error())
-	}
-
-	etaAccountAsBytes, err := stub.GetState(user.ETAAccountID)
-	if err != nil {
-		return entities.ETAAccount{}, errors.New("Could not retrieve eta acoount of the user" + err.Error())
-	}
-	var etaAccount entities.ETAAccount
-	err = json.Unmarshal(etaAccountAsBytes, &etaAccount)
-	if err != nil {
-		return entities.ETAAccount{}, errors.New("Could not unmarshall eta user acoount" + err.Error())
-	}
-
-	return etaAccount, nil
-}
-
 func GetAllTransactions(stub shim.ChaincodeStubInterface) ([]entities.Transaction, error) {
 	transactionsIndex, err := GetIndex(stub, TransactionsIndexName)
 	if err != nil {
@@ -112,7 +112,7 @@ func GetAllTransactions(stub shim.ChaincodeStubInterface) ([]entities.Transactio
 
 	var transactions []entities.Transaction
 	for _, transactionID := range transactionsIndex {
-		transaction, err := GetTransaction(stub, transactionID)
+		transaction, err := GetTransactionByID(stub, transactionID)
 		if err != nil {
 			return []entities.Transaction{}, errors.New("Could not retrieve transaction with ID: " + transactionID + ", reason: " + err.Error())
 		}
