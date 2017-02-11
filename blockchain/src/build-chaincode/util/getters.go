@@ -30,6 +30,20 @@ func GetUser(stub shim.ChaincodeStubInterface, userID string) (entities.User, er
 	return user, nil
 }
 
+func GetCompanyByID(stub shim.ChaincodeStubInterface, companyID string) (entities.Company, error) {
+	companyAsBytes, err := stub.GetState(companyID)
+	if err != nil {
+		return entities.Company{}, errors.New("Could not retrieve information for this user")
+	}
+
+	var company entities.Company
+	if err = json.Unmarshal(companyAsBytes, &company); err != nil {
+		return entities.Company{}, errors.New("Cannot get user, reason: " + err.Error())
+	}
+
+	return company, nil
+}
+
 func GetAllUsers(stub shim.ChaincodeStubInterface) ([]entities.User, error) {
 	usersIndex, err := GetIndex(stub, UsersIndexName)
 	if err != nil {
@@ -53,6 +67,24 @@ func GetAllUsers(stub shim.ChaincodeStubInterface) ([]entities.User, error) {
 	}
 
 	return users, nil
+}
+
+func GetAllCompanies(stub shim.ChaincodeStubInterface) ([]entities.Company, error) {
+	companies := []entities.Company{}
+	companyIndex, err := GetIndex(stub, CompaniesIndexName)
+	if err != nil {
+		return []entities.Company{}, errors.New("Error while getting companyIndex, reason: " + err.Error())
+	}
+
+	for _, companyID := range companyIndex {
+		company, err := GetCompanyByID(stub, companyID)
+		if err != nil {
+			return []entities.Company{}, errors.New("Error while getting company, reason: " + err.Error())
+		}
+		companies = append(companies, company)
+	}
+
+	return companies, nil
 }
 
 func GetETAAccountByUserID(stub shim.ChaincodeStubInterface, userID string) (entities.ETAAccount, error) {
@@ -93,9 +125,7 @@ func GetAllTransactions(stub shim.ChaincodeStubInterface) ([]entities.Transactio
 			return []entities.Transaction{}, errors.New("Error while unmarshalling transaction, reason: " + err.Error())
 		}
 
-		if (transaction.Status != "SOLD") {
-			transactions = append(transactions, transaction)
-		}
+		transactions = append(transactions, transaction)
 	}
 
 	return transactions, nil
