@@ -29,6 +29,7 @@ func (suite *GettersTestSuite) SetupTest() {
 	suite.stub.MockTransactionStart("chaincode")
 	suite.user = entities.User{
 		UserID: "john",
+		ETAAccountID: "1234",
 		CompanyID: "1234",
 		Salt: "salt",
 		Hash: "hash",

@@ -43,7 +43,7 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 		json.Unmarshal([]byte(args[0]), &transaction)
 		return nil, invokeAndQuery.CreateTransaction(stub, transaction)
 	} else if functionName == "createETAs" {
-		invokeAndQuery.CreateETAs(stub, cast.ToInt64(args[0]))
+		invokeAndQuery.CreateETAs(stub, )
 	}
 
 	return nil, errors.New("Received unknown invoke function name")
