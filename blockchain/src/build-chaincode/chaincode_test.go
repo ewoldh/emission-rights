@@ -31,10 +31,10 @@ func Test_WillReturnThatUserIsAuthenticatedWhenUserExists(t *testing.T) {
 	stub := shim.NewMockStub("ex02", scc)
 	user := entities.User{
 		Hash: "passwordHash",
-		Username: "john",
+		UserID: "john",
 	}
-	stub.State[user.Username], _ = json.Marshal(user)
-	resultAsBytes, err := scc.Query(stub, "authenticateAsUser", []string{user.Username, user.Hash})
+	stub.State[user.UserID], _ = json.Marshal(user)
+	resultAsBytes, err := scc.Query(stub, "authenticateAsUser", []string{user.UserID, user.Hash})
 
 	if err != nil {
 		t.Error(err.Error())

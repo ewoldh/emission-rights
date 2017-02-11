@@ -8,7 +8,7 @@ import {LandingComponent} from "./components/landing/landing.component";
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'landing', component: LandingComponent, canActivate: [AuthGuard],
+  {path: 'landing', component: LandingComponent, //canActivate: [AuthGuard],
   children: [
     {
       path: '',
