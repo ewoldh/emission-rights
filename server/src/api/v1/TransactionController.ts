@@ -24,8 +24,8 @@ export class TransactionController {
     return request.blockchain.query('getAllBoughtTransactionsByUserID', [userID], enrollmentID);
   }
 
-  @Get('/allOnSale/:id')
-  public getAllOnSale(@Param('id') userID: string, @Req() request: any): any {
+  @Get('/allOnSale/')
+  public getAllOnSale(@Req() request: any): any {
     let enrollmentID = new JSONWebToken(request).getUserID();
     return request.blockchain.query('getAllTransactionsOnSale', [''], enrollmentID);
   }
