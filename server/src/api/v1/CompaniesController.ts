@@ -5,7 +5,7 @@ import {CORSMiddleware} from '../../middleware/CORSMiddleware';
 import {LoggerFactory} from '../../utils/LoggerFactory';
 import {Service} from 'typedi';
 
-@JsonController('/etaAccount')
+@JsonController('/companies')
 @UseBefore(UserAuthenticatorMiddleware, CORSMiddleware)
 @Service()
 export class CompaniesController {
