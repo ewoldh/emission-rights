@@ -6,10 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./company-buy-rights.component.scss']
 })
 export class CompanyBuyRightsComponent implements OnInit {
-
-  constructor() { }
+  public leftBuy: string[] = [];
 
   ngOnInit() {
+    this.leftBuy.push('-26px');
   }
-
 }

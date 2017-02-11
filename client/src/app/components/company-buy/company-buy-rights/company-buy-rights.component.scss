@@ -1,11 +1,20 @@
 @import '../../../../assets/styles/variables';
 
 .background-content {
-    position: relative;
+    position: absolute;
+    top: 200px;
+    left: 200px;
     width: 600px;
-    height: 500px;
+    height: 400px;
     background-color: $whiteGreen;
     box-shadow: 1px 2px 5px $inactiveItem;
+
+    app-company-buy-details {
+        position: absolute;
+        top: 0;
+        right: -520px;
+        z-index: 10;
+    }
 
     .table-top-row {
         position: absolute;
@@ -85,13 +94,39 @@
 .under-line {
     position: absolute;
     top: 8px;
-    left: 12px;
+    left: 0;
     background-color: $darkGreen;
-    width: 620px;
+    width: 584px;
     height: 32px;
     z-index: 1;
+}
+
+.active-line {
+    transition: width 0.4s;
+    position: absolute;
+    background-color: $darkGreen;
+    top: 8px;
+    left: 584px;
+    width: 48px;
+    height: 32px;
+
+    &:hover {
+        width: 96px;
+    }
+
+    .buy {
+        transition: left 0.4s;
+        position: absolute;
+        top: 0;
+        font-size: 12px;
+        font-weight: 200;
+        color: $white;
+        line-height: 32px;
+        pointer-events: none;
+    }
 
     .taper-effect {
+        pointer-events: none;
         background: none;
         transform: rotate(135deg);
         width: 0;
@@ -118,6 +153,7 @@
 }
 
 .pointer-right {
+    pointer-events: none;
     background: none;
     width: 0;
     height: 0;
