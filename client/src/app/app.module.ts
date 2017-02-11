@@ -12,13 +12,25 @@ import {LoginComponent} from './components/login/login.component';
 import {ThingsComponent} from './components/things/things.component';
 
 import {ThingService} from './services/thing.service'
-import {AuthenticationService} from './services/authentication.service'
+import {AuthenticationService} from './services/authentication.service';
+import { HeaderComponent } from './components/emission-header/emission-header.component';
+import { CompanyBuyComponent } from './components/company-buy/company-buy.component';
+import { CompanyBuyFilterComponent } from './components/company-buy/company-buy-filter/company-buy-filter.component';
+import { CompanyBuyRightsComponent } from './components/company-buy/company-buy-rights/company-buy-rights.component';
+import { CompanyBuyDetailsComponent } from './components/company-buy/company-buy-details/company-buy-details.component'
+import {LandingComponent} from "./components/landing/landing.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ThingsComponent
+    LandingComponent,
+    ThingsComponent,
+    HeaderComponent,
+    CompanyBuyComponent,
+    CompanyBuyFilterComponent,
+    CompanyBuyRightsComponent,
+    CompanyBuyDetailsComponent
   ],
   imports: [
     BrowserModule,
