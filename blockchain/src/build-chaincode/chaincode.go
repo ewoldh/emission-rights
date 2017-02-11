@@ -88,15 +88,24 @@ func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionNam
 			return nil, errors.New("could not retrieve Sales transactions" + args[0] + "reason: " + err.Error())
 		}
 		 return allTransactionsOnSale, nil
+	} else if functionName == "getETAAccountByUserID" {
+		etaAccountByUserID, err := util.GetETAAccountByUserID(stub, args[0])
+		if err != nil {
+			return nil, errors.New("Could not retrieve an account with that user ID" + args[0] + ", reason: " + err.Error())
+		}
+
+		return etaAccountByUserID, nil
+	} else if functionName == "getAllCompanies" {
+		allCompanies, err := util.GetAllCompanies(stub)
+		if err != nil {
+			return nil, errors.New("Could not retrieve any companies, reason: " + err.Error())
+		}
+		return allCompanies, nil
 	}
 
 
 	//TODO Create the following connections:
 	//GetAllBoughtTransactions with the functionName "getAllBoughtTransactionsByUserID"
-	//GetAllSoldTransactions with the functionName "getAllSoldTransactionsByUserID"
-	//GetAllTransactionsOnSale with the functionName "getAllTransactionsOnSale"
-	//GetETAAccountByUserID with the functionName "getETAAccountByUserID"
-	//GetAllCompanies with the functionName "getAllCompanies" FIXME: function needs to be build
 
 	return nil, errors.New("Received unknown query function name")
 }
