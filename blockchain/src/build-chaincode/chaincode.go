@@ -9,6 +9,7 @@ import (
 	"build-chaincode/util"
 	"build-chaincode/entities"
 	"build-chaincode/invokeAndQuery"
+	"github.com/spf13/cast"
 )
 
 var logger = shim.NewLogger("fabric-boilerplate")
@@ -37,9 +38,13 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 		return nil, t.addUser(stub, args[0], args[1])
 	} else if functionName == "addTestdata" {
 		return nil, t.addTestdata(stub, args[0])
-	}  //TODO create the following connections:
-	//CreateTransaction, the functionName will be "createTransaction"
-	//CreateETAs, the functionName will be "createETAs" FIXME: function needs to be build
+	} else if functionName == "createTransaction" {
+		transaction := entities.Transaction{}
+		json.Unmarshal([]byte(args[0]), &transaction)
+		return nil, invokeAndQuery.CreateTransaction(stub, transaction)
+	} else if functionName == "createETAs" {
+		invokeAndQuery.CreateETAs(stub, cast.ToInt64(args[0]))
+	}
 
 	return nil, errors.New("Received unknown invoke function name")
 }
@@ -74,20 +79,27 @@ func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionNam
 		}
 
 		return t.authenticateAsUser(stub, user, args[1]), nil
-	}  else if functionName == "getAllSoldTransactionsByUserID" {
+	} else if functionName == "getAllSoldTransactionsByUserID" {
 		soldSalesByUserID, err := invokeAndQuery.GetSoldSalesByUserID(stub, args[0])
 		if err != nil {
 			return nil, errors.New("could not retrieve things by user id: " + args[0] + ", reason: " + err.Error())
 		}
-		return soldSalesByUserID, nil
 
-		// GetAllTransactionsOnSale is not ready
+		return soldSalesByUserID, nil
+	} else if functionName == "getAllBoughtTransactionsByUserID" {
+		soldSalesByUserID, err := invokeAndQuery.GetBoughtSalesByUserID(stub, args[0])
+		if err != nil {
+			return nil, errors.New("could not retrieve things by user id: " + args[0] + ", reason: " + err.Error())
+		}
+
+		return soldSalesByUserID, nil
 	} else if functionName =="getAllTransactionsOnSale"{
 		allTransactionsOnSale, err := invokeAndQuery.GetAllTransactionsOnSale(stub)
 		if err != nil{
 			return nil, errors.New("could not retrieve Sales transactions" + args[0] + "reason: " + err.Error())
 		}
-		 return allTransactionsOnSale, nil
+
+		return allTransactionsOnSale, nil
 	} else if functionName == "getETAAccountByUserID" {
 		etaAccountByUserID, err := util.GetETAAccountByUserID(stub, args[0])
 		if err != nil {
@@ -100,12 +112,9 @@ func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionNam
 		if err != nil {
 			return nil, errors.New("Could not retrieve any companies, reason: " + err.Error())
 		}
+
 		return allCompanies, nil
 	}
-
-
-	//TODO Create the following connections:
-	//GetAllBoughtTransactions with the functionName "getAllBoughtTransactionsByUserID"
 
 	return nil, errors.New("Received unknown query function name")
 }

@@ -25,7 +25,7 @@ export class TestData {
 
   private writeTestDataToLedger(testData: any): Promise<any>  {
     testData.users = testData.users.map(
-        (user: any) => new User(user.userID, user.password, user.username)
+        (user: any) => new User(user.userID, user.password, user.companyID, user.etaAccountID)
     );
 
     const functionName = 'addTestdata';
