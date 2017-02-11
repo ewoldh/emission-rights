@@ -93,9 +93,7 @@ func GetAllTransactions(stub shim.ChaincodeStubInterface) ([]entities.Transactio
 			return []entities.Transaction{}, errors.New("Error while unmarshalling transaction, reason: " + err.Error())
 		}
 
-		if (transaction.Status != "SOLD") {
-			transactions = append(transactions, transaction)
-		}
+		transactions = append(transactions, transaction)
 	}
 
 	return transactions, nil

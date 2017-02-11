@@ -8,6 +8,7 @@ import (
 	"os"
 	"build-chaincode/util"
 	"build-chaincode/entities"
+	"build-chaincode/invokeAndQuery"
 )
 
 var logger = shim.NewLogger("fabric-boilerplate")
@@ -73,7 +74,23 @@ func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionNam
 		}
 
 		return t.authenticateAsUser(stub, user, args[1]), nil
+	}  else if functionName == "getAllSoldTransactionsByUserID" {
+		soldSalesByUserID, err := invokeAndQuery.GetSoldSalesByUserID(stub, args[0])
+		if err != nil {
+			return nil, errors.New("could not retrieve things by user id: " + args[0] + ", reason: " + err.Error())
+		}
+		return soldSalesByUserID, nil
+
+		// GetAllTransactionsOnSale is not ready
+	} else if functionName =="getAllTransactionsOnSale"{
+		allTransactionsOnSale, err := invokeAndQuery.GetAllTransactionsOnSale(stub)
+		if err != nil{
+			return nil, errors.New("could not retrieve Sales transactions" + args[0] + "reason: " + err.Error())
+		}
+		 return allTransactionsOnSale, nil
 	}
+
+
 	//TODO Create the following connections:
 	//GetAllBoughtTransactions with the functionName "getAllBoughtTransactionsByUserID"
 	//GetAllSoldTransactions with the functionName "getAllSoldTransactionsByUserID"
