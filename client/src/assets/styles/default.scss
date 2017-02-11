@@ -5,8 +5,9 @@
     font-family: "roboto";
 }
 
-body, html {
+html {
     background-color: $backgroundGreen;
+    overflow: hidden;
 }
 
 .container {

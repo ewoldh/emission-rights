@@ -4,18 +4,39 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 1400px;
+  width: 860px;
   height: 104px;
   margin: 0;
   padding: 0;
   background-color: $white;
   box-shadow: 2px 2px 5px $inactiveItem;
 
+  .right-side-taper {
+    position: absolute;
+    top: -142px;
+    right: -102px;
+    height: 204px;
+    width: 204px;
+    box-shadow: 2px 2px 5px $inactiveItem;
+    transform: rotate(45deg);
+    background-color: $white;
+  }
+
+  .shadow-hider {
+    position: absolute;
+    background-color: $white;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 104px;
+    z-index: 1;
+  }
+
   .left-side-header {
     position: absolute;
     left: 20px;
     top: 20px;
-    width: 340px;
+    width: 260px;
     height: 64px;
 
     .left-image {
@@ -29,6 +50,8 @@
       top: 0;
       font-size: 30px;
       color: $darkGreen;
+      height: 64px;
+      width: 196px;
 
       .page-information-above {
         padding: 0;
@@ -38,7 +61,7 @@
         left: 0;
         font-size: 24px;
         line-height: 24px;
-        width: calc(100% - 60px);
+        width: 100%;
         height: 34px;
         border-bottom: 4px solid $darkGreen;
         font-weight: 300;
@@ -51,7 +74,7 @@
       .page-information-under {
         margin: 0;
         position: absolute;
-        top: 34px ;
+        top: 40px ;
         left: 0;
         padding-left: 8px;
         font-size: 14px;
@@ -63,17 +86,71 @@
 }
 
 .right-side-header {
+  position: absolute;
+  top: 44px;
+  left: 310px;
+  width: 610px;
+  z-index: 2;
+
   .menu-item {
+    cursor: pointer;
     display: inline-block;
-    font-size: 50px;
-    color: green;
-    margin: 0px 15px 30px 15px;
+    font-size: 20px;
+    font-weight: 200;
+    color: $inactiveItem;
+    margin: 0 16px 0 16px;
+
+    &:hover {
+      color: $lineGreen
+    }
 
     &.active {
       color: $darkGreen;
       border-bottom: 4px solid $darkGreen;
 
     }
+  }
+}
 
+.connectors-background {
+  z-index: -1;
+  position: absolute;
+  top: 104px;
+  left: 0;
+  width: 470px;
+  height: 460px;
+
+  .main-block {
+    background-color: $connectorGreen;
+    width: 100%;
+    height: 100%;
+
+    .top-slope {
+      position: absolute;
+      top: 8px;
+      right: -110px;
+      background: none;
+      transform: rotate(45deg);
+      width: 0;
+      height: 0;
+      position: absolute;
+      border: 80px solid transparent;
+      border-left: 80px solid $backgroundGreen;
+      z-index: 1;
+    }
+
+    .bottom-slope {
+      position: absolute;
+      bottom: -178px;
+      left: -200px;
+      background: none;
+      transform: rotate(45deg);
+      width: 0;
+      height: 0;
+      position: absolute;
+      border: 200px solid transparent;
+      border-right: 200px solid $connectorGreen;
+      z-index: 1;
+    }
   }
 }
