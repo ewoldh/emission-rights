@@ -51,7 +51,9 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 		util.StoreObjectInChain(stub, thing.ThingID, util.ThingsIndexName, thingAsBytes)
 
 		return nil, nil
-	}
+	} //TODO create the following connections:
+	//CreateTransaction, the functionName will be "createTransaction"
+	//CreateETAs, the functionName will be "createETAs" FIXME: function needs to be build
 
 	return nil, errors.New("Received unknown invoke function name")
 }
@@ -94,6 +96,12 @@ func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionNam
 
 		return thingsByUserID, nil
 	}
+	//TODO Create the following connections:
+	//GetAllBoughtTransactions with the functionName "getAllBoughtTransactionsByUserID"
+	//GetAllSoldTransactions with the functionName "getAllSoldTransactionsByUserID"
+	//GetAllTransactionsOnSale with the functionName "getAllTransactionsOnSale"
+	//GetETAAccountByUserID with the functionName "getETAAccountByUserID"
+	//GetAllCompanies with the functionName "getAllCompanies" FIXME: function needs to be build
 
 	return nil, errors.New("Received unknown query function name")
 }

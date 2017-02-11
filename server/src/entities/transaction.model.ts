@@ -10,7 +10,8 @@ export class Transaction {
                      private _volume: number,
                      private _seller: string,
                      private _buyer: string,
-                     private _requestStatus: string) {
+                     private _requestStatus: string,
+                     private _transparent: boolean) {
     this._transactionID   = shortID.generate();
     this._transactionDate = new Date().getTime();
   }
@@ -43,16 +44,20 @@ export class Transaction {
     return this._requestStatus;
   }
 
+  public get transparent(): boolean {
+    return this._transparent;
+  }
+
   public toJSON(): any {
     return {
       'transactionID':   this.transactionID,
       'price':           this.transactionDate,
       'volume':          this.price,
       'transactionDate': this.volume,
-      'seller':         this.seller,
+      'seller':          this.seller,
       'buyer':           this.buyer,
       'requestStatus':   this.requestStatus,
-
+      'transparent':     this.transparent
     };
   }
 }

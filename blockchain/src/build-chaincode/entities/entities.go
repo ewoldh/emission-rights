@@ -30,6 +30,7 @@ type Transaction struct {
 	Seller		string  `json:"seller"`
 	Buyer		string  `json:"buyer"`
 	RequestStatus	string	`json:"requestStatus"`
+	Transparent	bool	`json:"transparent"`
 }
 
 type Company struct {

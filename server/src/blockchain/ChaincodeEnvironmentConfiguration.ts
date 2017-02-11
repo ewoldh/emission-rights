@@ -35,6 +35,6 @@ export interface PeerConfig {
 }
 
 export interface UserAttribute {
-  name: string;
-  value: string;
+  userID: string;
+  role: string;
 }
