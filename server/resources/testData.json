@@ -71,24 +71,24 @@
       "approvalStatus": "Approved"
     }
   ],
-  "bankAccount":[
+  "bankAccounts":[
     {
       "bankAccountID":"12345",
       "userID":"1234",
       "companyID":"4321",
-      "accountBalance":"100000"
+      "accountBalance":100000
     },
     {
       "bankAccountID":"23456",
       "userID":"2345",
       "companyID":"5432",
-      "accountBalance":"200000"
+      "accountBalance":200000
     },
     {
       "bankAccountID":"45678",
       "userID":"4567",
       "companyID":"7654",
-      "accountBalance":"50000"
+      "accountBalance":50000
     }
   ],
   "etaAccounts": [

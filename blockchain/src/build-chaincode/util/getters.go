@@ -16,33 +16,6 @@ func GetCurrentBlockchainUser(stub shim.ChaincodeStubInterface) (entities.User, 
 	return GetUser(stub, string(userIDAsBytes))
 }
 
-func GetThingsByUserID(stub shim.ChaincodeStubInterface, userID string) ([]string, error) {
-	thingsIndex, err := GetIndex(stub, ThingsIndexName)
-	if err != nil {
-		return []string{}, errors.New("Unable to retrieve thingsIndex, reason: " + err.Error())
-	}
-
-	thingIDs := []string{}
-	for _, thingID := range thingsIndex {
-		thingAsBytes, err := stub.GetState(thingID)
-		if err != nil {
-			return []string{}, errors.New("Could not retrieve thing for ID " + thingID + " reason: " + err.Error())
-		}
-
-		var thing entities.Thing
-		err = json.Unmarshal(thingAsBytes, &thing)
-		if err != nil {
-			return []string{}, errors.New("Error while unmarshalling thingAsBytes, reason: " + err.Error())
-		}
-
-		if thing.UserID == userID {
-			thingIDs = append(thingIDs, thing.ThingID)
-		}
-	}
-
-	return thingIDs, nil
-}
-
 func GetUser(stub shim.ChaincodeStubInterface, userID string) (entities.User, error) {
 	userAsBytes, err := stub.GetState(userID)
 	if err != nil {
@@ -81,6 +54,7 @@ func GetAllUsers(stub shim.ChaincodeStubInterface) ([]entities.User, error) {
 
 	return users, nil
 }
+
 func GetETAAccountByUserID(stub shim.ChaincodeStubInterface, userID string) (entities.ETAAccount, error) {
 	user, err := GetUser(stub, userID)
 	if err != nil {
@@ -119,7 +93,7 @@ func GetAllTransactions(stub shim.ChaincodeStubInterface) ([]entities.Transactio
 			return []entities.Transaction{}, errors.New("Error while unmarshalling transaction, reason: " + err.Error())
 		}
 
-		if (transaction.RequestStatus != "SOLD") {
+		if (transaction.Status != "SOLD") {
 			transactions = append(transactions, transaction)
 		}
 	}

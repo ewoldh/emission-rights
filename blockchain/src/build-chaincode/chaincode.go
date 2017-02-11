@@ -36,22 +36,7 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 		return nil, t.addUser(stub, args[0], args[1])
 	} else if functionName == "addTestdata" {
 		return nil, t.addTestdata(stub, args[0])
-	} else if functionName == "createThing" {
-		thingAsJSON := args[0]
-		var thing entities.Thing
-		if err := json.Unmarshal([]byte(thingAsJSON), &thing); err != nil {
-			return nil, errors.New("Error while unmarshalling thing, reason: " + err.Error())
-		}
-
-		thingAsBytes, err := json.Marshal(thing);
-		if err != nil {
-			return nil, errors.New("Error marshalling thing, reason: " + err.Error())
-		}
-
-		util.StoreObjectInChain(stub, thing.ThingID, util.ThingsIndexName, thingAsBytes)
-
-		return nil, nil
-	} //TODO create the following connections:
+	}  //TODO create the following connections:
 	//CreateTransaction, the functionName will be "createTransaction"
 	//CreateETAs, the functionName will be "createETAs" FIXME: function needs to be build
 
@@ -88,13 +73,6 @@ func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionNam
 		}
 
 		return t.authenticateAsUser(stub, user, args[1]), nil
-	} else if functionName == "getThingsByUserID" {
-		thingsByUserID, err := util.GetThingsByUserID(stub, args[0])
-		if err != nil {
-			return nil, errors.New("could not retrieve things by user id: " + args[0] + ", reason: " + err.Error())
-		}
-
-		return thingsByUserID, nil
 	}
 	//TODO Create the following connections:
 	//GetAllBoughtTransactions with the functionName "getAllBoughtTransactionsByUserID"
@@ -168,13 +146,48 @@ func (t *Chaincode) addTestdata(stub shim.ChaincodeStubInterface, testDataAsJson
 		}
 	}
 
-	for _, thing := range testData.Things {
-		thingAsBytes, err := json.Marshal(thing);
+	for _, company := range testData.Companies {
+		thingAsBytes, err := json.Marshal(company);
 		if err != nil {
 			return errors.New("Error marshalling testThing, reason: " + err.Error())
 		}
 
-		err = util.StoreObjectInChain(stub, thing.ThingID, util.ThingsIndexName, thingAsBytes)
+		err = util.StoreObjectInChain(stub, company.CompanyID, util.CompaniesIndexName, thingAsBytes)
+		if err != nil {
+			return errors.New("error in storing object, reason: " + err.Error())
+		}
+	}
+	for _, transaction := range testData.Transactions {
+		thingAsBytes, err := json.Marshal(transaction);
+		if err != nil {
+			return errors.New("Error marshalling testThing, reason: " + err.Error())
+		}
+
+		err = util.StoreObjectInChain(stub, transaction.TransactionID, util.TransactionsIndexName, thingAsBytes)
+		if err != nil {
+			return errors.New("error in storing object, reason: " + err.Error())
+		}
+	}
+
+	for _, etaAccount := range testData.ETAAcounts {
+		thingAsBytes, err := json.Marshal(etaAccount);
+		if err != nil {
+			return errors.New("Error marshalling testThing, reason: " + err.Error())
+		}
+
+		err = util.StoreObjectInChain(stub, etaAccount.ETAAccountID, util.ETAAccountsIndexName, thingAsBytes)
+		if err != nil {
+			return errors.New("error in storing object, reason: " + err.Error())
+		}
+	}
+
+	for _, bankAccount := range testData.BankAccounts {
+		thingAsBytes, err := json.Marshal(bankAccount);
+		if err != nil {
+			return errors.New("Error marshalling testThing, reason: " + err.Error())
+		}
+
+		err = util.StoreObjectInChain(stub, bankAccount.BankAccountID, util.BankAccountsIndexName, thingAsBytes)
 		if err != nil {
 			return errors.New("error in storing object, reason: " + err.Error())
 		}

@@ -7,8 +7,8 @@ export class ETAAccount {
 
   public constructor(private _userID: string,
                      private _companyID: string,
-                     private _balance: string,
-                     private _amountOfTransactions: string) {
+                     private _balance: number,
+                     private _amountOfTransactions: number) {
     this._etaAccountID = shortID.generate();
   }
 
@@ -24,11 +24,11 @@ export class ETAAccount {
     return this._companyID;
   }
 
-  public get balance(): string {
+  public get balance(): number {
     return this._balance;
   }
 
-  public get amountOfTransactions(): string {
+  public get amountOfTransactions(): number {
     return this._amountOfTransactions;
   }
 

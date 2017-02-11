@@ -7,7 +7,7 @@ export class BankAccount {
 
     public constructor(private _companyID: string,
                        private _userID: string,
-                       private _accountBalance: string) {
+                       private _accountBalance: number) {
         this._bankAccountID = shortID.generate();
     }
 
@@ -23,7 +23,7 @@ export class BankAccount {
         return this._userID;
     }
 
-    public get accountBalance(): string {
+    public get accountBalance(): number {
         return this._accountBalance;
     }
 
