@@ -89,12 +89,12 @@ func GetETAAccountByUserID(stub shim.ChaincodeStubInterface, userID string) (ent
 
 	etaAccountAsBytes, err := stub.GetState(user.ETAAccountID)
 	if err != nil {
-		return entities.ETAAccount{}, errors.New("Could not retrieve eta user acoount" + err.Error())
+		return entities.ETAAccount{}, errors.New("Could not retrieve eta acoount of the user" + err.Error())
 	}
 	var etaAccount entities.ETAAccount
 	err = json.Unmarshal(etaAccountAsBytes, &etaAccount)
 	if err != nil {
-		return entities.ETAAccount{}, errors.New("Could not retrieve eta user acoount" + err.Error)
+		return entities.ETAAccount{}, errors.New("Could not unmarshall eta user acoount" + err.Error())
 	}
 
 	return etaAccount, nil
