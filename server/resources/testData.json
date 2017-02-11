@@ -19,7 +19,7 @@
       "companyID": "5432",
       "attributes": [
         {
-          "userID": "bob",
+          "userID": "erika",
           "role": "company"
         }
       ]
@@ -31,7 +31,7 @@
       "companyID": "6543",
       "attributes": [
         {
-          "userID": "alice",
+          "userID": "jane",
           "role": "authority"
         }
       ]
