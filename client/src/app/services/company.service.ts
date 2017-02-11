@@ -12,7 +12,7 @@ export class CompanyService {
   constructor(private _http: Http,
               private _configuration: Configuration,
               private _authenticationService: AuthenticationService) {
-    this.actionUrl = _configuration.Server + 'api/v1/etaAccounts';
+    this.actionUrl = _configuration.Server + 'api/v1/companies';
     this.headers = _authenticationService.createAuthorizationHeader();
   }
 
