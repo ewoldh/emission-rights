@@ -1,0 +1,162 @@
+{
+  "users": [
+    {
+      "userID": "john",
+      "etaAccountID": "1234",
+      "password": "passw0rd",
+      "companyID": "4321",
+      "attributes": [
+        {
+          "userID": "john",
+          "role": "company"
+        }
+      ]
+    },
+    {
+      "userID": "erika",
+      "etaAccountID": "2345",
+      "password": "passw0rd",
+      "companyID": "5432",
+      "attributes": [
+        {
+          "userID": "bob",
+          "role": "company"
+        }
+      ]
+    },
+    {
+      "userID": "jane",
+      "etaAccountID": "3456",
+      "password": "passw0rd",
+      "companyID": "6543",
+      "attributes": [
+        {
+          "userID": "alice",
+          "role": "government"
+        }
+      ]
+    },
+    {
+      "userID": "bert",
+      "etaAccountID": "4567",
+      "password": "passw0rd",
+      "companyID": "7654",
+      "attributes": [
+        {
+          "userID": "bert",
+          "role": "company"
+        }
+      ]
+    }
+  ],
+  "companies" : [
+    {
+      "companyID": "4321",
+      "companyName": "bigBusiness",
+      "approvalStatus": "Approved"
+    },
+    {
+      "companyID": "5432",
+      "companyName": "noWasteToWaste",
+      "approvalStatus": "Approval pending"
+    },
+    {
+      "companyID": "6543",
+      "companyName": "government",
+      "approvalStatus": "authority"
+    },
+    {
+      "companyID": "7654",
+      "companyName": "batteryByBatteryProduction",
+      "approvalStatus": "Approved"
+    }
+  ],
+  "bankAccounts":[
+    {
+      "bankAccountID":"12345",
+      "userID":"1234",
+      "companyID":"4321",
+      "accountBalance":100000
+    },
+    {
+      "bankAccountID":"23456",
+      "userID":"2345",
+      "companyID":"5432",
+      "accountBalance":200000
+    },
+    {
+      "bankAccountID":"45678",
+      "userID":"4567",
+      "companyID":"7654",
+      "accountBalance":50000
+    }
+  ],
+  "etaAccounts": [
+    {
+      "etaAccountID": "1234",
+      "companyID": "4321",
+      "balance": 500,
+      "amountOfTransactions": 0
+    },
+    {
+      "etaAccountID": "2345",
+      "companyID": "5432",
+      "balance": 500,
+      "amountOfTransactions": 0
+    },
+    {
+      "etaAccountID": "3456",
+      "companyID": "6543",
+      "balance": 50000,
+      "amountOfTransactions": 1245213
+    },
+    {
+      "etaAccountID": "4567",
+      "companyID": "7654",
+      "balance": 500,
+      "amountOfTransactions": 0
+    }
+  ],
+  "transactions": [
+    {
+      "transactionID": "sdfgdfg",
+      "price": 0.86,
+      "volume": 600,
+      "transactionDate": 1486799555357,
+      "seller": "4567",
+      "buyer": "2345",
+      "status": "requested",
+      "transparent": true
+    },
+    {
+      "transactionID": "dfghdfgh",
+      "price": 0.76,
+      "volume": 2000,
+      "transactionDate": 1486799555357,
+      "seller": "2345",
+      "buyer": "2345",
+      "status": "requested",
+      "transparent": true
+    },
+    {
+      "transactionID": "fjgjgfjfg",
+      "price": 0.90,
+      "volume": 50,
+      "transactionDate": 1486799555357,
+      "seller": "1234",
+      "buyer": "2345",
+      "status": "requested",
+      "transparent": true
+    },
+    {
+      "transactionID": "asdfasdf",
+      "price": 0.86,
+      "volume": 8000,
+      "transactionDate": 1486799555357,
+      "seller": "1234",
+      "buyer": "2345",
+      "status": "requested",
+      "transparent": true
+    }
+  ]
+}
