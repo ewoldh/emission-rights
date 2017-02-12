@@ -13,19 +13,9 @@ import (
 )
 
 var logger = shim.NewLogger("fabric-boilerplate")
-//======================================================================================================================
-//	 Structure Definitions
-//======================================================================================================================
-//	SimpleChaincode - A blank struct for use with Shim (An IBM Blockchain included go file used for get/put state
-//					  and other IBM Blockchain functions)
-//==============================================================================================================================
+
 type Chaincode struct {
 }
-
-//======================================================================================================================
-//	Invoke - Called on chaincode invoke. Takes a function name passed and calls that function. Passes the
-//  		 initial arguments passed are passed on to the called function.
-//======================================================================================================================
 
 func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string, args []string) ([]byte, error) {
 	logger.Infof("Invoke is running " + functionName)
@@ -54,10 +44,6 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 	return nil, errors.New("Received unknown invoke function name")
 }
 
-//======================================================================================================================
-//	Query - Called on chaincode query. Takes a function name passed and calls that function. Passes the
-//  		initial arguments passed are passed on to the called function.
-//=================================================================================================================================
 func (t *Chaincode) Query(stub shim.ChaincodeStubInterface, functionName string, args []string) ([]byte, error) {
 	logger.Infof("Query is running " + functionName)
 
@@ -124,10 +110,6 @@ func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionNam
 	return nil, errors.New("Received unknown query function name")
 }
 
-//======================================================================================================================
-//  Main - main - Starts up the chaincode
-//======================================================================================================================
-
 func main() {
 	// LogDebug, LogInfo, LogNotice, LogWarning, LogError, LogCritical (Default: LogDebug)
 	logger.SetLevel(shim.LogInfo)
@@ -141,17 +123,9 @@ func main() {
 	}
 }
 
-//======================================================================================================================
-//  Init Function - Called when the user deploys the chaincode
-//======================================================================================================================
-
 func (t *Chaincode) Init(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 	return nil, nil
 }
-
-//======================================================================================================================
-//  Invoke Functions
-//======================================================================================================================
 
 func (t *Chaincode) addUser(stub shim.ChaincodeStubInterface, index string, userJSONObject string) error {
 	id, err := util.WriteIDToBlockchainIndex(stub, util.UsersIndexName, index)
@@ -235,10 +209,6 @@ func (t *Chaincode) addTestdata(stub shim.ChaincodeStubInterface, testDataAsJson
 
 	return nil
 }
-
-//======================================================================================================================
-//		Query Functions
-//======================================================================================================================
 
 func (t *Chaincode) authenticateAsUser(stub shim.ChaincodeStubInterface, user entities.User, passwordHash string) (entities.UserAuthenticationResult) {
 	if user == (entities.User{}) {
