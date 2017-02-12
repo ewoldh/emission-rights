@@ -24,14 +24,14 @@ export class TransactionService {
   public getBuyHistoryById() {
     let user: any = JSON.parse(localStorage.getItem('currentUser')).user;
     return this._http
-      .get(this.actionUrlBought + '/' + user.userID, {headers: this.headers})
+      .get(this.actionUrlBought, {headers: this.headers})
       .map(res => res.json());
   }
 
   public getSellHistoryById() {
     let user: any = JSON.parse(localStorage.getItem('currentUser')).user;
     return this._http
-      .get(this.actionUrlSold + '/' + user.userID, {headers: this.headers})
+      .get(this.actionUrlSold, {headers: this.headers})
       .map(res => res.json());
   }
 

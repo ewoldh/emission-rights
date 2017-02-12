@@ -5,51 +5,43 @@
       "etaAccountID": "1234",
       "password": "passw0rd",
       "companyID": "4321",
-      "attributes": [
-        {
-          "userID": "john",
-          "role": "company"
-        }
-      ]
+      "attributes": {
+        "userID": "john",
+        "role": "company"
+      }
     },
     {
       "userID": "erika",
       "etaAccountID": "2345",
       "password": "passw0rd",
       "companyID": "5432",
-      "attributes": [
-        {
-          "userID": "erika",
-          "role": "company"
-        }
-      ]
+      "attributes": {
+        "userID": "erika",
+        "role": "company"
+      }
     },
     {
       "userID": "jane",
       "etaAccountID": "3456",
       "password": "passw0rd",
       "companyID": "6543",
-      "attributes": [
-        {
-          "userID": "jane",
-          "role": "authority"
-        }
-      ]
+      "attributes": {
+        "userID": "jane",
+        "role": "authority"
+      }
     },
     {
       "userID": "bert",
       "etaAccountID": "4567",
       "password": "passw0rd",
       "companyID": "7654",
-      "attributes": [
-        {
-          "userID": "bert",
-          "role": "company"
-        }
-      ]
+      "attributes": {
+        "userID": "bert",
+        "role": "company"
+      }
     }
   ],
-  "companies" : [
+  "companies": [
     {
       "companyID": "4321",
       "companyName": "bigBusiness",
@@ -71,24 +63,24 @@
       "approvalStatus": "Approved"
     }
   ],
-  "bankAccounts":[
+  "bankAccounts": [
     {
-      "bankAccountID":"12345",
-      "userID":"john",
-      "companyID":"4321",
-      "accountBalance":100000
+      "bankAccountID": "12345",
+      "userID": "john",
+      "companyID": "4321",
+      "accountBalance": 100000
     },
     {
-      "bankAccountID":"23456",
-      "userID":"erika",
-      "companyID":"5432",
-      "accountBalance":200000
+      "bankAccountID": "23456",
+      "userID": "erika",
+      "companyID": "5432",
+      "accountBalance": 200000
     },
     {
-      "bankAccountID":"45678",
-      "userID":"bert",
-      "companyID":"7654",
-      "accountBalance":50000
+      "bankAccountID": "45678",
+      "userID": "bert",
+      "companyID": "7654",
+      "accountBalance": 50000
     }
   ],
   "etaAccounts": [
