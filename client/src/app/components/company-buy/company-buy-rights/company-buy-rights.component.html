@@ -33,7 +33,10 @@
         <div class="taper-effect"></div>
       </div>
 
-      <app-company-buy-details [inputData]="this.outputData[i]"></app-company-buy-details>
+      <app-company-buy-details
+        [inputData]="this.outputData[i]"
+        [ngStyle]="{right: this.displayRight}">
+      </app-company-buy-details>
     </div>
   </div>
 
