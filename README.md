@@ -1,3 +1,5 @@
+[![BCH compliance](https://bettercodehub.com/edge/badge/ewoldh/emission-rights)](https://bettercodehub.com) 
+
 # Fabric boilerplate
 This is a boilerplate application to get you up and running quickly with your own blockchain application. With this boilerplate you get an application that you can run locally as well as on IBM Bluemix. There is a simple Angular frontend application, a NodeJS backend application and of course a blockchain network, all running in containers. Locally, the boilerplate starts up a blockchain network using Docker containers; on Bluemix you can use the Blockchain service.
 
