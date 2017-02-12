@@ -158,7 +158,7 @@ export abstract class Blockchain {
           account:      '',
           attributes:   [
             {name: 'userID', value: userToRegister.enrollId},
-            {name: 'role', value: userToRegister.attributes.role ? userToRegister.attributes.role : ''}
+            {name: 'role', value: userToRegister.attributes ? userToRegister.attributes.role : ''}
           ],
           roles:        [userToRegister.role]
         };
