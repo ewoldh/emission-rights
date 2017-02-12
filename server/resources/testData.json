@@ -193,43 +193,6 @@
       "market": "CO2",
       "status": "requested",
       "transparent": true
-    },
-    {
-      "transactionID": "asd1235v154fasdf",
-      "price": 0.86,
-      "volume": 8000,
-      "sellDate": 1472296662000,
-      "DateOfTransaction": 0,
-      "seller": "bert",
-      "buyer": "erika",
-      "market": "CO2",
-      "status": "requested",
-      "transparent": true
-    },
-    {
-      "transactionID": "asd12351z54fasdf",
-      "price": 0.86,
-      "volume": 8000,
-      "sellDate": 1472300862000,
-      "DateOfTransaction": 0,
-      "seller": "bert",
-      "buyer": "erika",
-      "market": "CO2",
-      "status": "requested",
-      "transparent": true
-    },
-    {
-      "transactionID": "asd1235154asdffasdf",
-      "price": 0.86,
-      "volume": 8000,
-      "sellDate": 1472297882000,
-      "DateOfTransaction": 0,
-      "seller": "bert",
-      "buyer": "erika",
-      "market": "CO2",
-      "status": "requested",
-      "transparent": true
     }
-
   ]
 }
