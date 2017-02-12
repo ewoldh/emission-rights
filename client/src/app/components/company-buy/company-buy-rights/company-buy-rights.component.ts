@@ -11,6 +11,7 @@ export class CompanyBuyRightsComponent implements OnInit {
   @Output() outputData : any[] = [];
 
   public leftBuy: string[] = [];
+  public displayRight: string [] = [];
   private getAllonSale: any;
 
   constructor(private transactionService: TransactionService) { }
@@ -22,6 +23,7 @@ export class CompanyBuyRightsComponent implements OnInit {
       this.leftBuy = [];
       for (var item in this.getAllonSale) {
         this.leftBuy.push('-26px');
+        this.displayRight.push('0px');
         this.outputData.push([ [false, item] ]);
       };
 
@@ -34,11 +36,13 @@ export class CompanyBuyRightsComponent implements OnInit {
     this.leftBuy = [];
     for (var item in this.getAllonSale) {
       this.leftBuy.push('-26px');
+      this.displayRight.push('0px');
       this.outputData.push([ [false, item] ]);
     }
   }
 
   showDetails(index) {
+    this.displayRight[index] = '-380px'
     this.outputData[index] = [true, index];
   }
 }

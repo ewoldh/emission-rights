@@ -27,9 +27,9 @@ export class CompanyBuyDetailsComponent implements OnInit {
     switch (button) {
       case 'cancel':
         this.inputData[0] = false;
-        console.log(this.inputData);
         break;
       case 'buy':
+        this.inputData[0] = false;
         console.log(this.getSpecificData[this.inputData[1]]);
         break;
     }

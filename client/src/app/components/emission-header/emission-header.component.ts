@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
         this.headerTitle = 'SELLING';
         break;
       case '/landing/buy':
-        console.log('yaay');
         this.headerStyles.buying = 'menu-item active';
         this.headerTitle = 'BUYING';
         break;

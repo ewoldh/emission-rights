@@ -1,7 +1,7 @@
 @import "../../../../../assets/styles/variables";
 
 .details-container {
-  transition: scale 0.4s;
+  transition: opacity 0.4s;
   width: 270px;
   height: 120px;
   background-color: $inputGreen;
@@ -19,6 +19,39 @@
     left: -39px;
     border: 40px solid transparent;
     border-right: 40px solid $darkGreen;
+  }
+
+  .middle-block {
+    position: absolute;
+    background-color: $darkGreen;
+    top: 52px;
+    left: -82px;
+    width: 82px;
+    height: 32px;
+    z-index: -1;
+  }
+
+  .middle-tiny-block {
+    position: absolute;
+    background-color: $darkGreen;
+    top: 52px;
+    left: -32px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .middle-taper {
+      pointer-events: none;
+      background: none;
+      transform: rotate(45deg);
+      width: 0;
+      height: 0;
+      position: absolute;
+      bottom: 26px;
+      left: -97px;
+      border: 22px solid transparent;
+      border-left: 22px solid $darkGreen;
+      z-index: 20;
   }
 
   .bottom-triangle {
@@ -103,14 +136,18 @@
       }
 
       .category {
+        position: absolute;
+        width: 50%;
         padding-left: 8px;
         font-weight: 300;
+        color: $lastField;
       }
 
       .data {
         position: absolute;
         width: auto;
         left: 60%;
+        color: $darkGreen;
       }
     }
 
@@ -120,7 +157,7 @@
       right: 0;
       width: 70px;
       height: 70px;
-      background-color: darkblue;
+      background-color: black;
       line-height: 70px;
       text-align: center;
       color: $white;

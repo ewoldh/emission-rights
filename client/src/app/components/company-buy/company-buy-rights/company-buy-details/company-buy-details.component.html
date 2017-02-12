@@ -1,6 +1,8 @@
 <div class="details-container" *ngIf="this.inputData[0]">
   <div class="top-triangle"></div>
   <div class="middle-block"></div>
+  <div class="middle-tiny-block"></div>
+  <div class="middle-taper"></div>
   <div class="bottom-triangle"></div>
 
   <div class="details-header">
@@ -18,17 +20,17 @@
       <div class="middle-div">
         <div class="category">Market: </div>
         <div class="data">
-          {{this.getSpecificData[ this.inputData[1] ].price * this.getSpecificData[ this.inputData[1] ].market}}
+          {{this.getSpecificData[ this.inputData[1] ].market}}
         </div>
       </div>
       <div class="bottom-div">
         <div class="category">Company: </div>
         <div class="data">
-          {{this.getSpecificData[ this.inputData[1] ].user}}
+          {{this.getSpecificData[ this.inputData[1] ].seller}}
         </div>
       </div>
     </div>
-    <div class="details-image">foto<div>
+    <div class="details-image">foto</div>
   </div>
 
   <div class="buttons-container">
