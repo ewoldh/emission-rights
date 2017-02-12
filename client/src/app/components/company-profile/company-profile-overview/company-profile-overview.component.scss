@@ -1,0 +1,181 @@
+@import '../../../../assets/styles/variables';
+
+.background-content {
+    position: absolute;
+    top: 180px;
+    left: 260px;
+    width: 600px;
+    height: 400px;
+    background-color: $whiteGreen;
+    box-shadow: 1px 2px 5px $inactiveItem;
+
+    app-company-buy-details {
+        transition: right 0.4s;
+        position: absolute;
+        top: -44px;
+        right: -380px;
+        z-index: 20;
+    }
+
+    .table-top-row {
+        position: absolute;
+        top: -11px;
+        left: 50%;
+        transform: translateX(- 50%);
+        width: 568px;
+        height: 22px;
+        line-height: 22px;
+        background-color: $white;
+        font-size: 11px;
+        box-shadow: 2px 2px 2px $inactiveItem;
+        color: $inputGreen;
+        font-weight: 100;
+
+        .column {
+            padding-left: 8px;
+            line-height: 22px;
+
+            &.top-left {
+                border-right: 1px solid $lineGreen;
+            }
+
+            &.top-right {
+                border-left: 1px solid $lineGreen;
+            }
+        }
+    }
+}
+
+.items-list {
+    position: absolute;
+    left: 16px;
+    top: 20px;
+    color: $darkGreen;
+
+    .list-item {
+        position: relative;
+        height: 32px;
+        width: 584px;
+        margin-bottom: 16px;
+        font-weight: 200;
+        font-size: 18px;
+        line-height: 32px;
+        z-index: 2;
+    }
+}
+
+.left-column {
+    position: relative;
+    width: calc( 30% + 4px);
+    background-color: $white;
+    margin: 0;
+    padding: 0;
+    border-right: 1px solid $lineGreen;
+    box-shadow: 2px 0px 2px $inactiveItem;
+    z-index: 2;
+}
+
+.middle-column {
+    padding-left: 8px;
+    margin-left: -6px;
+    width: calc( 40% + 2px);
+    background-color: $white;
+    z-index: -1;
+}
+
+.right-column {
+    background-color: $white;
+    width: calc( 30% - 12px);
+    padding: 0;
+    margin: 0;
+    margin-left: -7px;
+    border-left: 1px solid $lineGreen;
+    box-shadow: -2px 0px 2px $inactiveItem;
+    color: $lastField;
+    z-index: 2;
+}
+
+.content {
+    position: relative;
+    padding-left: 8px;
+}
+
+.euro-sign {
+    position: absolute;
+    left: 2px;
+    line-height: 32px;
+}
+
+.under-line {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    background-color: $darkGreen;
+    width: 584px;
+    height: 32px;
+    z-index: -1;
+}
+
+.active-line {
+    transition: width 0.4s;
+    position: absolute;
+    background-color: $darkGreen;
+    top: 8px;
+    left: 584px;
+    width: 48px;
+    height: 32px;
+
+    &:hover {
+        width: 96px;
+    }
+
+    .buy {
+        transition: left 0.4s;
+        position: absolute;
+        top: 0;
+        font-size: 12px;
+        font-weight: 200;
+        color: $white;
+        line-height: 32px;
+        pointer-events: none;
+    }
+
+    .taper-effect {
+        pointer-events: none;
+        background: none;
+        transform: rotate(135deg);
+        width: 0;
+        height: 0;
+        position: absolute;
+        bottom: 10px;
+        right: -22px;
+        border: 22px solid transparent;
+        border-right: 22px solid $backgroundGreen;
+        z-index: 2;
+    }
+}
+
+.pointer-left {
+    background: none;
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    border: 8px solid transparent;
+    border-left: 8px solid $whiteGreen;
+    z-index: 2;
+}
+
+.pointer-right {
+    pointer-events: none;
+    background: none;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    right: -32px;
+    border: 16px solid transparent;
+    border-left: 16px solid $white;
+    z-index: 2;
+}

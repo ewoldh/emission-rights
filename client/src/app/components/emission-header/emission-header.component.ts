@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
     switch(this.router.url) {
       case '/landing/sell':
         this.headerStyles.selling = 'menu-item active';
-        this.headerTitle = 'SELLING';
+        this.headerStyles.selling = 'menu-item active';
         break;
       case '/landing/buy':
         this.headerStyles.buying = 'menu-item active';
@@ -30,16 +30,21 @@ export class HeaderComponent implements OnInit {
         break;
       case '/landing/transactions':
         this.headerTitle = 'TRANSACTIONS';
-        this.router.navigate(['./landing/transactions']);
+        this.headerStyles.transactions = 'menu-item active';
+        break;
+      case '/landing/profile':
+        this.headerTitle = 'PROFILE';
+        this.headerStyles.profile = 'menu-item active';
         break;
     }
   }
 
   changePage(input: string) {
     for (var item in this.headerStyles) {
-      this.headerStyles[item] = 'menu-item'
       if (item === input) {
-        this.headerStyles[item] ='menu-item active'
+        this.headerStyles[item] ='menu-item active';
+      } else {
+        this.headerStyles[item] = 'menu-item';
       }
     }
 
@@ -55,6 +60,10 @@ export class HeaderComponent implements OnInit {
       case 'transactions':
         this.headerTitle = 'TRANSACTIONS';
         this.router.navigate(['./landing/transactions']);
+        break;
+      case 'profile':
+        this.headerTitle = 'PROFILE';
+        this.router.navigate(['./landing/profile']);
         break;
 
     }

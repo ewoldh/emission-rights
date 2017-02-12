@@ -3,11 +3,11 @@ import { TransactionService } from "../../../services/transaction.service";
 
 
 @Component({
-  selector: 'app-company-transactions-overview',
-  templateUrl: './company-transactions-overview.component.html',
-  styleUrls: ['./company-transactions-overview.component.scss']
+  selector: 'app-company-profile-overview',
+  templateUrl: './company-profile-overview.component.html',
+  styleUrls: ['./company-profile-overview.component.scss']
 })
-export class CompanyTransactionsOverviewComponent implements OnInit {
+export class CompanyProfileOverviewComponent implements OnInit {
 @Output() outputData : any[] = [];
 
   public leftBuy: string[] = [];
@@ -17,7 +17,7 @@ export class CompanyTransactionsOverviewComponent implements OnInit {
   constructor(private transactionService: TransactionService) { }
 
   ngOnInit() {
-    this.transactionService.getBuyHistoryById().subscribe(onsale => {
+    this.transactionService.getSellHistoryById().subscribe(onsale => {
       this.getAllonSale = onsale;
       
       this.leftBuy = [];

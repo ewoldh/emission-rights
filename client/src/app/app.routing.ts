@@ -6,6 +6,7 @@ import { ThingsComponent } from './components/things/things.component';
 import { CompanyBuyComponent } from './components/company-buy/company-buy.component';
 import { CompanySellComponent} from './components/company-sell/company-sell.component';
 import { CompanyTransactionsComponent} from './components/company-transactions/company-transactions.component';
+import { CompanyProfileComponent } from './components/company-profile/company-profile.component';
 import { LandingComponent } from "./components/landing/landing.component";
 
 const appRoutes: Routes = [
@@ -28,6 +29,10 @@ const appRoutes: Routes = [
     {
       path: 'transactions',
       component: CompanyTransactionsComponent
+    },
+    {
+      path: 'profile',
+      component: CompanyProfileComponent
     },
     {
       path: 'things',
