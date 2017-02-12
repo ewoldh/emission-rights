@@ -43,9 +43,11 @@ export class TransactionController {
     );
   }
 
-  @Post('/finaliseTransaction/:transactionid')
-  public postTransaction(@Param('transactionid') TransactionID: string, @Req() request: any): any {
+  @Post('/finaliseTransaction/')
+  public postTransaction(@Body() transactionID: string, @Req() request: any): any {
     let enrollmentID = new JSONWebToken(request).getUserID();
-    return request.blockchain.invoke('finaliseTransaction', [TransactionID], enrollmentID);
+    let finaliseDate      = new Date().getTime();
+    return request.blockchain.invoke('finaliseTransaction', [transactionID, finaliseDate], enrollmentID);
   }
+
 }
