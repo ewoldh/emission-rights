@@ -1,6 +1,12 @@
 exclude:
+- /client/karma.conf.js
+- /client/protractor.conf.js
+- /server/gruntfile.js
+- /server/src/app.ts
 - /server/src/blockchain/.*
+- /server/src/deploy.ts
 - /server/src/middleware/.*
+- /server/src/routes.ts
 - /server/src/utils/.*
 component_depth: 1
 languages:

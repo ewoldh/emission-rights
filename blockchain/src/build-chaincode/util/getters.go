@@ -48,25 +48,6 @@ func GetCompanyByID(stub shim.ChaincodeStubInterface, companyID string) (entitie
 	return company, nil
 }
 
-func GetETAAccountByUserID(stub shim.ChaincodeStubInterface, userID string) (entities.ETAAccount, error) {
-	user, err := GetUserByID(stub, userID)
-	if err != nil {
-		return entities.ETAAccount{}, errors.New("Could not retrieve user account with id: "+ userID +", reason: " + err.Error())
-	}
-
-	etaAccountAsBytes, err := stub.GetState(user.ETAAccountID)
-	if err != nil {
-		return entities.ETAAccount{}, errors.New("Could not retrieve eta acoount of the user" + err.Error())
-	}
-	var etaAccount entities.ETAAccount
-	err = json.Unmarshal(etaAccountAsBytes, &etaAccount)
-	if err != nil {
-		return entities.ETAAccount{}, errors.New("Cannot unmarshall eta account with id " + etaAccount.ETAAccountID + ", reason: " + err.Error())
-	}
-
-	return etaAccount, nil
-}
-
 func GetAllUsers(stub shim.ChaincodeStubInterface) ([]entities.User, error) {
 	usersIndex, err := GetIndex(stub, UsersIndexName)
 	if err != nil {
