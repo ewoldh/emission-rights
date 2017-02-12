@@ -11,10 +11,16 @@ import { ThingsComponent } from './components/things/things.component';
 import { ThingService } from './services/thing.service'
 import { AuthenticationService } from './services/authentication.service';
 import { HeaderComponent } from './components/emission-header/emission-header.component';
+
 import { CompanyBuyComponent } from './components/company-buy/company-buy.component';
 import { CompanyBuyFilterComponent } from './components/company-buy/company-buy-filter/company-buy-filter.component';
 import { CompanyBuyRightsComponent } from './components/company-buy/company-buy-rights/company-buy-rights.component';
 import { CompanyBuyDetailsComponent } from './components/company-buy/company-buy-rights/company-buy-details/company-buy-details.component'
+
+import { CompanySellComponent } from './components/company-sell/company-sell.component';
+import { CompanySellNewComponent } from './components/company-sell/company-sell-new/company-sell-new.component';
+import { CompanySellOverviewComponent } from './components/company-sell/company-sell-overview/company-sell-overview.component';
+
 import { LandingComponent } from "./components/landing/landing.component";
 import { CompanyService } from "./services/company.service";
 import { EtaAccountService } from "./services/eta-account.service";
@@ -30,7 +36,10 @@ import { TransactionService } from "./services/transaction.service";
     CompanyBuyComponent,
     CompanyBuyFilterComponent,
     CompanyBuyRightsComponent,
-    CompanyBuyDetailsComponent
+    CompanyBuyDetailsComponent,
+    CompanySellComponent,
+    CompanySellNewComponent,
+    CompanySellOverviewComponent
   ],
   imports: [
     BrowserModule,

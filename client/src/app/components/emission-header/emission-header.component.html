@@ -4,18 +4,33 @@
 
     <div class="page-information">
       <div class="page-information-above">
-        <div class="content">BUYING</div>
+        <div class="content">{{this.headerTitle}}</div>
       </div>
       <div class="page-information-under">C O M P A N Y account</div>
     </div>
   </div>
 
-
   <div class="right-side-header">
-    <div class="menu-item">OVERVIEW</div>
-    <div class="menu-item ">SELLING</div>
-    <div class="menu-item active">BUYING</div>
-    <div class="menu-item">TRANSACTIONS</div>
+    <div id="menu-item1"
+      (click)="changePage('overview')"
+      [ngClass]="this.headerStyles.profile">
+      PROFILE
+    </div>
+    <div class="menu-item2"
+      (click)="changePage('selling')"
+      [ngClass]="this.headerStyles.selling">
+      SELLING
+    </div>
+    <div id="menu-item3"
+      (click)="changePage('buying')"
+      [ngClass]="this.headerStyles.buying">
+      BUYING
+    </div>
+    <div id="menu-item4"
+      (click)="changePage('transactions')"
+      [ngClass]="this.headerStyles.transactions">
+      TRANSACTIONS
+      </div>
   </div>
 
   <div class="shadow-hider"></div>
