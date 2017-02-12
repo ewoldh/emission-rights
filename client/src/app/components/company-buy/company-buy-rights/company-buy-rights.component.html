@@ -7,7 +7,7 @@
   </div>
 
   <div class="items-list">
-    <div class="container list-item" *ngFor="let r of getAllonSale">
+    <div class="container list-item" *ngFor="let r of getAllonSale; let i = index">
       <div class="col-3 left-column">
         <div class="content">{{r.volume}}</div>
       </div>
@@ -26,13 +26,14 @@
         <div class="pointer-left"></div>
       </div>
       <div class="active-line"
-           (mouseenter)="this.leftBuy[0] = '26px'"
-           (mouseleave)="this.leftBuy[0] = '-26px'">
-        <div class="buy" [ngStyle]="{left: this.leftBuy[0]}">B U Y</div>
+           (mouseenter)="this.leftBuy[i] = '26px'"
+           (mouseleave)="this.leftBuy[i] = '-26px'"
+           (click)="showDetails(i)">
+        <div class="buy" [ngStyle]="{left: this.leftBuy[i]}">B U Y</div>
         <div class="taper-effect"></div>
       </div>
 
-      <app-company-buy-details></app-company-buy-details>
+      <app-company-buy-details [inputData]="this.outputData[i]"></app-company-buy-details>
     </div>
   </div>
 

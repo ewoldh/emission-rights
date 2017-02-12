@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import {TransactionService} from "../../../services/transaction.service";
 
 @Component({
@@ -7,18 +7,38 @@ import {TransactionService} from "../../../services/transaction.service";
   styleUrls: ['./company-buy-rights.component.scss']
 })
 export class CompanyBuyRightsComponent implements OnInit {
+  
+  @Output() outputData : any[] = [];
+
   public leftBuy: string[] = [];
-  private getAllonSale:any;
+  private getAllonSale: any;
 
-  constructor(private transactionService: TransactionService){
+  constructor(private transactionService: TransactionService) { }
 
-  }
   ngOnInit() {
-    this.leftBuy.push('-26px');
     this.transactionService.getAllonSale().subscribe(onsale => {
       this.getAllonSale = onsale;
-      console.log('Get all on sale', onsale[0]);
+      
+      this.leftBuy = [];
+      for (var item in this.getAllonSale) {
+        this.leftBuy.push('-26px');
+        this.outputData.push([ [false, item] ]);
+      };
 
     });
+
+  }
+
+  ngOnChange() {
+    console.log('ngOnChange is activated');
+    this.leftBuy = [];
+    for (var item in this.getAllonSale) {
+      this.leftBuy.push('-26px');
+      this.outputData.push([ [false, item] ]);
+    }
+  }
+
+  showDetails(index) {
+    this.outputData[index] = [true, index];
   }
 }
