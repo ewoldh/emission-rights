@@ -11,6 +11,7 @@ export class Transaction {
                      private _seller: string,
                      private _dateOfTransaction: number,
                      private _buyer: string,
+                     private _market: string,
                      private _requestStatus: string,
                      private _transparent: boolean) {
     this._transactionID = shortID.generate();
@@ -45,6 +46,10 @@ export class Transaction {
     return this._buyer;
   }
 
+  public get market(): string {
+    return this._market;
+  }
+
   public get requestStatus(): string {
     return this._requestStatus;
   }
@@ -62,6 +67,7 @@ export class Transaction {
       'buyDate':         this.dateOfTransaction,
       'seller':          this.seller,
       'buyer':           this.buyer,
+      'market':          this.market,
       'requestStatus':   this.requestStatus,
       'transparent':     this.transparent
     };

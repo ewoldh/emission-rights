@@ -5,10 +5,6 @@ import {CORSMiddleware} from '../../middleware/CORSMiddleware';
 import {LoggerFactory} from '../../utils/LoggerFactory';
 import {Service} from 'typedi';
 
-class Value {
-  public amount: number;
-}
-
 @JsonController('/etaAccounts')
 @UseBefore(UserAuthenticatorMiddleware, CORSMiddleware)
 @Service()

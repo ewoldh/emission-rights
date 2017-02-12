@@ -32,6 +32,7 @@ type Transaction struct {
 	SellDate           int64   `json:"sellDate"`
 	Seller             string  `json:"seller"`
 	Buyer              string  `json:"buyer"`
+	Market		   string  `json:"market"`
 	Status             string  `json:"status"`
 	Transparent        bool    `json:"transparent"`
 }

@@ -118,6 +118,7 @@
       "DateOfTransaction": 0,
       "seller": "bert",
       "buyer": "jane",
+      "market": "CO2",
       "status": "requested",
       "transparent": true
     },
@@ -129,6 +130,7 @@
       "DateOfTransaction": 1486799555357,
       "seller": "jane",
       "buyer": "john",
+      "market": "CO2",
       "status": "requested",
       "transparent": true
     },
@@ -140,6 +142,7 @@
       "DateOfTransaction": 1486799600000,
       "seller": "john",
       "buyer": "jane",
+      "market": "CO2",
       "status": "Sold",
       "transparent": true
     },
@@ -151,6 +154,7 @@
       "DateOfTransaction": 0,
       "seller": "john",
       "buyer": "erika",
+      "market": "CO2",
       "status": "requested",
       "transparent": true
     }
