@@ -33,6 +33,7 @@
         box-shadow: 2px 2px 2px $inactiveItem;
 
         .submit-button {
+            cursor: pointer;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -141,6 +142,7 @@
         align-items: center;
 
         .filter-button {
+            cursor: pointer;
             display: inline-block;
             background-color: $darkGreen;
             color: $white;
