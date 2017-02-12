@@ -3,11 +3,11 @@ import { TransactionService } from "../../../services/transaction.service";
 
 
 @Component({
-  selector: 'app-company-sell-overview',
-  templateUrl: './company-sell-overview.component.html',
-  styleUrls: ['./company-sell-overview.component.scss']
+  selector: 'app-company-transactions-overview',
+  templateUrl: './company-transactions-overview.component.html',
+  styleUrls: ['./company-transactions-overview.component.scss']
 })
-export class CompanySellOverviewComponent implements OnInit {
+export class CompanyTransactionsOverviewComponent implements OnInit {
 @Output() outputData : any[] = [];
 
   public leftBuy: string[] = [];
