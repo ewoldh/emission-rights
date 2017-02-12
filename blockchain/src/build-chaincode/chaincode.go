@@ -92,7 +92,7 @@ func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionNam
 
 		return allTransactionsOnSale, nil
 	} else if functionName == "getETAAccountByUserID" {
-		etaAccountByUserID, err := util.GetETAAccountByUserID(stub, args[0])
+		etaAccountByUserID, err := invokeAndQuery.GetETAAccountByUserID(stub, args[0])
 		if err != nil {
 			return nil, errors.New("Could not retrieve an account with that user ID" + args[0] + ", reason: " + err.Error())
 		}
