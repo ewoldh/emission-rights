@@ -25,6 +25,22 @@ func Test_WillReturnThatUserIsUnauthenticatedWhenUserDoesNotExist(t *testing.T) 
 		t.Error("User does not exist so should not be authenticated")
 	}
 }
+//
+//func Test_InvokeOfACertainFunction(t *testing.T) {
+//	scc := new(Chaincode)
+//	stub := shim.NewMockStub("ex02", scc)
+//	user := entities.User{
+//		Hash: "passwordHash",
+//		UserID: "john",
+//	}
+//	stub.State[user.UserID], _ = json.Marshal(user)
+//	args := []string{"1342354"}
+//	_, err := scc.Invoke(stub, "createETAs", args)
+//	if err != nil {
+//		t.Error(err.Error())
+//	}
+//
+//}
 
 func Test_WillReturnThatUserIsAuthenticatedWhenUserExists(t *testing.T) {
 	scc := new(Chaincode)

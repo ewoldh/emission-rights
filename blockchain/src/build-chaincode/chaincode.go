@@ -9,7 +9,7 @@ import (
 	"build-chaincode/util"
 	"build-chaincode/entities"
 	"build-chaincode/invokeAndQuery"
-	"github.com/spf13/cast"
+	"strconv"
 )
 
 var logger = shim.NewLogger("fabric-boilerplate")
@@ -43,7 +43,12 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 		json.Unmarshal([]byte(args[0]), &transaction)
 		return nil, invokeAndQuery.CreateTransaction(stub, transaction)
 	} else if functionName == "createETAs" {
-		invokeAndQuery.CreateETAs(stub, cast.ToInt64(args[0]))
+		amount, err := strconv.ParseInt(args[0], 10, 64)
+		if err != nil {
+			return nil, errors.New("Couldn't convert string to int, reason: " + err.Error())
+		}
+
+		return nil, invokeAndQuery.CreateETAs(stub, amount)
 	}
 
 	return nil, errors.New("Received unknown invoke function name")
@@ -80,14 +85,14 @@ func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionNam
 
 		return t.authenticateAsUser(stub, user, args[1]), nil
 	} else if functionName == "getAllSoldTransactionsByUserID" {
-		soldSalesByUserID, err := invokeAndQuery.GetSoldSalesByUserID(stub, args[0])
+		soldSalesByUserID, err := invokeAndQuery.GetSoldSalesByUser(stub)
 		if err != nil {
 			return nil, errors.New("could not retrieve things by user id: " + args[0] + ", reason: " + err.Error())
 		}
 
 		return soldSalesByUserID, nil
 	} else if functionName == "getAllBoughtTransactionsByUserID" {
-		soldSalesByUserID, err := invokeAndQuery.GetBoughtSalesByUserID(stub, args[0])
+		soldSalesByUserID, err := invokeAndQuery.GetBoughtSalesByUser(stub)
 		if err != nil {
 			return nil, errors.New("could not retrieve things by user id: " + args[0] + ", reason: " + err.Error())
 		}

@@ -58,15 +58,20 @@ func CreateTransaction(stub shim.ChaincodeStubInterface, transaction entities.Tr
 	return nil
 }
 
-func GetSoldSalesByUserID(stub shim.ChaincodeStubInterface, userID string) ([]entities.Transaction, error) {
+func GetSoldSalesByUser(stub shim.ChaincodeStubInterface) ([]entities.Transaction, error) {
 	transactions, err := util.GetAllTransactions(stub)
 	if err != nil {
 		return []entities.Transaction{}, errors.New("empty transactions db" + err.Error())
 	}
 
+	userIDAsBytes, err := stub.ReadCertAttribute("userID")
+	if err != nil {
+		return []entities.Transaction{}, errors.New("error while checking certificate attribute, reason: " + err.Error())
+	}
+
 	userTransactions := []entities.Transaction{}
 	for _, transaction := range transactions {
-		if transaction.Seller == userID {
+		if transaction.Seller == string(userIDAsBytes) {
 			userTransactions = append(userTransactions, transaction)
 		}
 	}
@@ -74,15 +79,20 @@ func GetSoldSalesByUserID(stub shim.ChaincodeStubInterface, userID string) ([]en
 	return userTransactions, nil
 }
 
-func GetBoughtSalesByUserID(stub shim.ChaincodeStubInterface, userID string) ([]entities.Transaction, error) {
+func GetBoughtSalesByUser(stub shim.ChaincodeStubInterface) ([]entities.Transaction, error) {
 	transactions, err := util.GetAllTransactions(stub)
 	if err != nil {
 		return []entities.Transaction{}, errors.New("empty transactions db" + err.Error())
 	}
 
+	userIDAsBytes, err := stub.ReadCertAttribute("userID")
+	if err != nil {
+		return []entities.Transaction{}, errors.New("error while checking certificate attribute, reason: " + err.Error())
+	}
+
 	userTransactions := []entities.Transaction{}
 	for _, transaction := range transactions {
-		if transaction.Buyer == userID {
+		if transaction.Buyer == string(userIDAsBytes) {
 			userTransactions = append(userTransactions, transaction)
 		}
 	}

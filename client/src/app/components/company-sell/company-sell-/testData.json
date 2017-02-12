@@ -5,43 +5,51 @@
       "etaAccountID": "1234",
       "password": "passw0rd",
       "companyID": "4321",
-      "attributes": {
-        "userID": "john",
-        "role": "company"
-      }
+      "attributes": [
+        {
+          "userID": "john",
+          "role": "company"
+        }
+      ]
     },
     {
       "userID": "erika",
       "etaAccountID": "2345",
       "password": "passw0rd",
       "companyID": "5432",
-      "attributes": {
-        "userID": "erika",
-        "role": "company"
-      }
+      "attributes": [
+        {
+          "userID": "bob",
+          "role": "company"
+        }
+      ]
     },
     {
       "userID": "jane",
       "etaAccountID": "3456",
       "password": "passw0rd",
       "companyID": "6543",
-      "attributes": {
-        "userID": "jane",
-        "role": "authority"
-      }
+      "attributes": [
+        {
+          "userID": "alice",
+          "role": "government"
+        }
+      ]
     },
     {
       "userID": "bert",
       "etaAccountID": "4567",
       "password": "passw0rd",
       "companyID": "7654",
-      "attributes": {
-        "userID": "bert",
-        "role": "company"
-      }
+      "attributes": [
+        {
+          "userID": "bert",
+          "role": "company"
+        }
+      ]
     }
   ],
-  "companies": [
+  "companies" : [
     {
       "companyID": "4321",
       "companyName": "bigBusiness",
@@ -63,22 +71,22 @@
       "approvalStatus": "Approved"
     }
   ],
-  "bankAccounts": [
+  "bankAccounts":[
     {
       "bankAccountID":"12345",
-      "userID":"john",
+      "userID":"1234",
       "companyID":"4321",
       "accountBalance":100000
     },
     {
       "bankAccountID":"23456",
-      "userID":"erica",
+      "userID":"2345",
       "companyID":"5432",
       "accountBalance":200000
     },
     {
       "bankAccountID":"45678",
-      "userID":"bert",
+      "userID":"4567",
       "companyID":"7654",
       "accountBalance":50000
     }
@@ -114,10 +122,9 @@
       "transactionID": "sdfgdfg",
       "price": 0.86,
       "volume": 600,
-      "sellDate": 1486799555357,
-      "DateOfTransaction": 0,
-      "seller": "bert",
-      "buyer": "erika",
+      "transactionDate": 1486799555357,
+      "seller": "4567",
+      "buyer": "2345",
       "status": "requested",
       "transparent": true
     },
@@ -125,10 +132,9 @@
       "transactionID": "dfghdfgh",
       "price": 0.76,
       "volume": 2000,
-      "sellDate": 1486799555357,
-      "DateOfTransaction": 1486799555357,
-      "seller": "erika",
-      "buyer": "john",
+      "transactionDate": 1486799555357,
+      "seller": "2345",
+      "buyer": "2345",
       "status": "requested",
       "transparent": true
     },
@@ -136,21 +142,19 @@
       "transactionID": "fjgjgfjfg",
       "price": 0.90,
       "volume": 50,
-      "sellDate": 1486799555357,
-      "DateOfTransaction": 1486799600000,
-      "seller": "john",
-      "buyer": "erika",
-      "status": "Sold",
+      "transactionDate": 1486799555357,
+      "seller": "1234",
+      "buyer": "2345",
+      "status": "requested",
       "transparent": true
     },
     {
       "transactionID": "asdfasdf",
       "price": 0.86,
       "volume": 8000,
-      "sellDate": 1486799555357,
-      "DateOfTransaction": 0,
-      "seller": "john",
-      "buyer": "erika",
+      "transactionDate": 1486799555357,
+      "seller": "1234",
+      "buyer": "2345",
       "status": "requested",
       "transparent": true
     }
