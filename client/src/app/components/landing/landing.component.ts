@@ -3,6 +3,9 @@ import {CompanyService} from '../../services/company.service';
 import {EtaAccountService} from '../../services/eta-account.service';
 import {TransactionService} from '../../services/transaction.service';
 
+
+
+
 @Component({
   selector:    'landing',
   templateUrl: 'landing.component.html',
@@ -15,10 +18,12 @@ export class LandingComponent implements OnInit {
   private sellHistoryById: Component;
   private getAllOnSale: Component[];
   private testNumber: number = 666;
+  private transaction:any;
 
   constructor(private companyService: CompanyService,
               private etaAccountService: EtaAccountService,
-              private transactionService: TransactionService) {}
+              private transactionService: TransactionService,
+              ) {}
 
   ngOnInit() {
     this.companyService.getAllCompanies().subscribe(companies => {
@@ -55,6 +60,8 @@ export class LandingComponent implements OnInit {
       console.log('Get all on sale', onsale);
       this.getAllOnSale = onsale;
     });
+
+    this.transactionService.postTransaction(this.transaction).subscribe(transaction=>{this.transaction=transaction console.log(this.transaction)});
 
   }
 }
