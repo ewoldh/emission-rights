@@ -126,3 +126,21 @@ func GetAllTransactionsOnSale(stub shim.ChaincodeStubInterface) ([]entities.Tran
 
 	return transactions, nil
 }
+
+func FinaliseTrade(stub shim.ChaincodeStubInterface, transactionID string, timeOfTrade int64) error {
+	transaction, err := util.GetTransactionByID(stub, transactionID)
+	if err != nil {
+		return errors.New("Error getting trade, reason: " + err.Error())
+	}
+
+	transaction.DateOfTransaction = timeOfTrade
+	transaction.Status = "Sold"
+	buyerAsBytes, err := stub.ReadCertAttribute("userID")
+	if err != nil {
+		return errors.New("Error reading certificate, reason: " + err.Error())
+	}
+	transaction.Buyer = string(buyerAsBytes)
+
+	return nil
+}
+

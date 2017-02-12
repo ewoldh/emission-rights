@@ -1,4 +1,4 @@
-import {Get, Post, JsonController, Body, Req, UseBefore} from 'routing-controllers';
+import {Get, Post, JsonController, Body, Req, UseBefore, Param} from 'routing-controllers';
 import {JSONWebToken} from '../../utils/JSONWebToken';
 import {UserAuthenticatorMiddleware} from '../../middleware/UserAuthenticatorMiddleware';
 import {CORSMiddleware} from '../../middleware/CORSMiddleware';
@@ -31,8 +31,23 @@ export class TransactionController {
   }
 
   @Post('/')
-  public post(@Body() transaction: Transaction, @Req() request: any): any {
-    let enrollmentID = new JSONWebToken(request).getUserID();
-    return request.blockchain.invoke('createTransaction', [transaction.toJSON()], enrollmentID);
+  public post(@Body() transactionTest: any, @Req() request: any): any {
+    let transaction = new Transaction(transactionTest.price,
+      transactionTest.volume,
+      transactionTest.seller,
+      transactionTest.dateOfTransaction,
+      transactionTest.buyer,
+      transactionTest.market,
+      transactionTest.requestStatus,
+      transactionTest.transparent
+    );
   }
+
+  @Post('/finaliseTransaction/')
+  public postTransaction(@Body() transactionID: string, @Req() request: any): any {
+    let enrollmentID = new JSONWebToken(request).getUserID();
+    let finaliseDate      = new Date().getTime();
+    return request.blockchain.invoke('finaliseTransaction', [transactionID, finaliseDate], enrollmentID);
+  }
+
 }
