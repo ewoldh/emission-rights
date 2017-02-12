@@ -31,8 +31,21 @@ export class TransactionController {
   }
 
   @Post('/')
-  public post(@Body() transaction: Transaction, @Req() request: any): any {
+  public post(@Body() transactionTest: any, @Req() request: any): any {
+    let transaction = new Transaction(transactionTest.price,
+      transactionTest.volume,
+      transactionTest.seller,
+      transactionTest.dateOfTransaction,
+      transactionTest.buyer,
+      transactionTest.market,
+      transactionTest.requestStatus,
+      transactionTest.transparent
+    );
+  }
+
+  @Post('/finaliseTransaction/:transactionid')
+  public postTransaction(@param(transactionid) @Req() request: any): any {
     let enrollmentID = new JSONWebToken(request).getUserID();
-    return request.blockchain.invoke('createTransaction', [transaction.toJSON()], enrollmentID);
+    return request.blockchain.invoke('finaliseTransaction', [''], enrollmentID);
   }
 }
