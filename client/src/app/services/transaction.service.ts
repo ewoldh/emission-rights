@@ -9,6 +9,7 @@ export class TransactionService {
   private actionUrlBought: string;
   private actionUrlSold: string;
   private actionUrlAllOnSale: string;
+  private actionUrl: string;
   private headers: any;
 
   constructor(private _http: Http,
@@ -18,6 +19,7 @@ export class TransactionService {
     this.actionUrlBought = _configuration.Server + 'api/v1/transactions/history/bought';
     this.actionUrlSold = _configuration.Server + 'api/v1/transactions/history/sold';
     this.actionUrlAllOnSale = _configuration.Server + 'api/v1/transactions/allOnSale';
+    this.actionUrl = _configuration.Server + 'api/v1/transactions';
     this.headers = _authenticationService.createAuthorizationHeader();
   }
 
@@ -42,4 +44,6 @@ export class TransactionService {
       .map(res => res.json());
   }
 
+  public postTransaction(transaction:any) {  return this._http.post(this.actionUrl, transaction, {headers: this.headers}) .map(res => res.json()); }
+  
 }
