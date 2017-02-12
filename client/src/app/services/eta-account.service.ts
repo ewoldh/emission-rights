@@ -23,7 +23,7 @@ export class EtaAccountService {
   }
 
   public postEtaAccount(amountValue: number) {
-    return this._http.post(this.actionUrl, amountValue, {headers: this.headers})
+    return this._http.post(this.actionUrl, {amountValue}, {headers: this.headers})
       .map(res => res.json());
   }
 

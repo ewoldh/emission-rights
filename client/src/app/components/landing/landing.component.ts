@@ -51,7 +51,7 @@ export class LandingComponent implements OnInit {
       this.sellHistoryById = transaction;
     });
 
-    this.transactionService.getSellHistoryById().subscribe(onsale => {
+    this.transactionService.getAllonSale().subscribe(onsale => {
       console.log('Get all on sale', onsale);
       this.getAllOnSale = onsale;
     });

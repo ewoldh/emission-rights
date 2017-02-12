@@ -8,17 +8,18 @@ import {TransactionService} from "../../../services/transaction.service";
 })
 export class CompanyBuyRightsComponent implements OnInit {
   public leftBuy: string[] = [];
-  private getAllonSale:any;
+  private transactionService:TransactionService;
+  private getAllOnSale:Component;
 
-  constructor(private transactionService: TransactionService){
+  constructor (private transactionService:TransactionService){
 
   }
+
   ngOnInit() {
     this.leftBuy.push('-26px');
     this.transactionService.getAllonSale().subscribe(onsale => {
-      this.getAllonSale = onsale;
-      console.log('Get all on sale', onsale[0]);
-
+      console.log('Get all on sale', onsale);
+      this.getAllOnSale = onsale;
     });
   }
 }
