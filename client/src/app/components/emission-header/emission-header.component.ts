@@ -28,6 +28,10 @@ export class HeaderComponent implements OnInit {
         this.headerStyles.buying = 'menu-item active';
         this.headerTitle = 'BUYING';
         break;
+      case '/landing/transactions':
+        this.headerTitle = 'TRANSACTIONS';
+        this.router.navigate(['./landing/transactions']);
+        break;
     }
   }
 
@@ -48,6 +52,11 @@ export class HeaderComponent implements OnInit {
         this.headerTitle = 'BUYING';
         this.router.navigate(['./landing/buy']);
         break;
+      case 'transactions':
+        this.headerTitle = 'TRANSACTIONS';
+        this.router.navigate(['./landing/transactions']);
+        break;
+
     }
   }
 

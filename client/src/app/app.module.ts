@@ -21,6 +21,10 @@ import { CompanySellComponent } from './components/company-sell/company-sell.com
 import { CompanySellNewComponent } from './components/company-sell/company-sell-new/company-sell-new.component';
 import { CompanySellOverviewComponent } from './components/company-sell/company-sell-overview/company-sell-overview.component';
 
+import { CompanyTransactionsComponent } from './components/company-transactions/company-transactions.component';
+import { CompanyTransactionsOverviewComponent } from './components/company-transactions/company-transactions-overview/company-transactions-overview.component';
+import { CompanyTransactionsFilterComponent } from './components/company-transactions/company-transactions-filter/company-transactions-filter.component';
+
 import { LandingComponent } from "./components/landing/landing.component";
 import { CompanyService } from "./services/company.service";
 import { EtaAccountService } from "./services/eta-account.service";
@@ -39,7 +43,10 @@ import { TransactionService } from "./services/transaction.service";
     CompanyBuyDetailsComponent,
     CompanySellComponent,
     CompanySellNewComponent,
-    CompanySellOverviewComponent
+    CompanySellOverviewComponent,
+    CompanyTransactionsComponent,
+    CompanyTransactionsOverviewComponent,
+    CompanyTransactionsFilterComponent
   ],
   imports: [
     BrowserModule,
