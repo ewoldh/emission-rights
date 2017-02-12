@@ -1,4 +1,6 @@
 exclude:
+- /client/karma.conf.js
+- /client/protractor.conf.js
 - /server/gruntfile.js
 - /server/src/app.ts
 - /server/src/blockchain/.*
