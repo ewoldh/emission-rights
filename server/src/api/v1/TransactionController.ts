@@ -1,4 +1,4 @@
-import {Get, Post, JsonController, Param, Body, Req, UseBefore} from 'routing-controllers';
+import {Get, Post, JsonController, Body, Req, UseBefore} from 'routing-controllers';
 import {JSONWebToken} from '../../utils/JSONWebToken';
 import {UserAuthenticatorMiddleware} from '../../middleware/UserAuthenticatorMiddleware';
 import {CORSMiddleware} from '../../middleware/CORSMiddleware';
@@ -12,16 +12,16 @@ import {Transaction} from '../../entities/transaction.model';
 export class TransactionController {
   public constructor(private loggerFactory: LoggerFactory) { }
 
-  @Get('/history/sold/:id')
-  public getAllSold(@Param('id') userID: string, @Req() request: any): any {
+  @Get('/history/sold/')
+  public getAllSold(@Req() request: any): any {
     let enrollmentID = new JSONWebToken(request).getUserID();
-    return request.blockchain.query('getAllSoldTransactionsByUserID', [userID], enrollmentID);
+    return request.blockchain.query('getAllSoldTransactionsByUserID', [''], enrollmentID);
   }
 
-  @Get('/history/bought/:id')
-  public getAllBought(@Param('id') userID: string, @Req() request: any): any {
+  @Get('/history/bought/')
+  public getAllBought(@Req() request: any): any {
     let enrollmentID = new JSONWebToken(request).getUserID();
-    return request.blockchain.query('getAllBoughtTransactionsByUserID', [userID], enrollmentID);
+    return request.blockchain.query('getAllBoughtTransactionsByUserID', [''], enrollmentID);
   }
 
   @Get('/allOnSale/')

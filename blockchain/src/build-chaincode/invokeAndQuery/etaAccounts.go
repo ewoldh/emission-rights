@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"build-chaincode/util"
 	"errors"
+	"fmt"
 )
 
 func GetETAAccountByUserID(stub shim.ChaincodeStubInterface, userID string) (entities.ETAAccount, error) {
@@ -40,16 +41,19 @@ func CreateETAs(stub shim.ChaincodeStubInterface, amount int64) error {
 
 	userIDAsBytes, err := stub.ReadCertAttribute("userID")
 	if err != nil {
-		return errors.New("error while checking certificate attribute, reason: " + err.Error())
+		return errors.New("error while Reading certificate attribute, reason: " + err.Error())
 	}
 
 	etaAccount, err := GetETAAccountByUserID(stub, string(userIDAsBytes))
 	if err != nil {
 		return errors.New("error while getting eta acount, reason: " + err.Error())
 	}
-
-	etaAccount.Balance += amount
+	fmt.Println("amount ", amount)
+	fmt.Println("eta account before ",etaAccount)
+	etaAccount.Balance = (etaAccount.Balance + amount)
 	etaAccountAsBytes, err := json.Marshal(etaAccount)
+	fmt.Println("eta account after ",etaAccount)
+
 	if err != nil {
 		return errors.New("error marshalling eta account, reason: " + err.Error())
 	}

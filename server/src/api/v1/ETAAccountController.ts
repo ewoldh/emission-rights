@@ -5,9 +5,9 @@ import {CORSMiddleware} from '../../middleware/CORSMiddleware';
 import {LoggerFactory} from '../../utils/LoggerFactory';
 import {Service} from 'typedi';
 
-// class EtaPostValues {
-//   amount: number;
-// }
+class Value {
+  public amount: number;
+}
 
 @JsonController('/etaAccounts')
 @UseBefore(UserAuthenticatorMiddleware, CORSMiddleware)
@@ -22,8 +22,8 @@ export class ETAAccountController {
   }
 
   @Post('/')
-  public addETAToTradePlatform(@Body() etaPostValues: any, @Req() request: any): any {
-    //let enrollmentID = new JSONWebToken(request).getUserID();
-    return request.blockchain.invoke('createETAs', [JSON.stringify(etaPostValues)], 'jane');
+  public addETAToTradePlatform(@Body() amount: number, @Req() request: any): any {
+    let enrollmentID = new JSONWebToken(request).getUserID();
+    return request.blockchain.invoke('createETAs', [amount.toString()], enrollmentID);
   }
 }

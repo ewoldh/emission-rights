@@ -3,9 +3,7 @@
 import {ChaincodeEnvironmentConfiguration, UserConfig} from './ChaincodeEnvironmentConfiguration';
 import {LoggerInstance} from 'winston';
 import * as fs from 'fs';
-import {
-  newChain, Chain, Member, RegistrationRequest, DeployRequest, EventDeployComplete
-} from 'hfc/lib/hfc';
+import {newChain, Chain, Member, RegistrationRequest, DeployRequest, EventDeployComplete} from 'hfc/lib/hfc';
 import {BlockchainClient} from './client/blockchainClient';
 import * as path from 'path';
 
@@ -29,8 +27,8 @@ export abstract class Blockchain {
     if (!this.chaincodeEnvironmentConfiguration.network || !this.chaincodeEnvironmentConfiguration.network.ca) {
       throw new Error('Blockchain configuration not set correctly.');
     }
-    let ca = this.chaincodeEnvironmentConfiguration.network.ca[Object.keys(this.chaincodeEnvironmentConfiguration.network.ca)[0]];
-    let peer = this.chaincodeEnvironmentConfiguration.network.peers[0];
+    let ca     = this.chaincodeEnvironmentConfiguration.network.ca[Object.keys(this.chaincodeEnvironmentConfiguration.network.ca)[0]];
+    let peer   = this.chaincodeEnvironmentConfiguration.network.peers[0];
     this.chain = await this.configureChain(this.chain, ca, peer);
 
     this.logger.info('[SDK] Connected to memberservice and peer');
@@ -66,8 +64,8 @@ export abstract class Blockchain {
 
         // Including a unique string as an argument to make sure each new deploy has a unique id
         let deployRequest = <DeployRequest>{
-          fcn: 'init',
-          args: [], // new Date().getTime().toString()
+          fcn:           'init',
+          args:          [], // new Date().getTime().toString()
           chaincodePath: path.basename(this.chaincodeEnvironmentConfiguration.chaincode.path)
         };
 
@@ -156,10 +154,13 @@ export abstract class Blockchain {
         // User is not enrolled yet, so perform both registration and enrollment
         let registrationRequest = <RegistrationRequest> {
           enrollmentID: userToRegister.enrollId,
-          affiliation: userToRegister.affiliation,
-          account: '',
-          attrs: userToRegister.attributes || [],
-          roles: [userToRegister.role]
+          affiliation:  userToRegister.affiliation,
+          account:      '',
+          attributes:   [
+            {name: 'userID', value: userToRegister.enrollId},
+            {name: 'role', value: userToRegister.attributes.role ? userToRegister.attributes.role : ''}
+          ],
+          roles:        [userToRegister.role]
         };
 
         this.chain.registerAndEnroll(registrationRequest, (err: Error) => {
