@@ -26,7 +26,7 @@ export interface UserConfig {
   enrollSecret?: string;
   role?: string;
   affiliation?: string;
-  attributes?: UserAttribute;
+  attributes?: UserAttribute[];
 }
 
 export interface PeerConfig {
@@ -35,6 +35,6 @@ export interface PeerConfig {
 }
 
 export interface UserAttribute {
-  userID: string;
-  role: string;
+  name: string;
+  value: string;
 }

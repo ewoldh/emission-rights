@@ -51,7 +51,10 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 		return nil, invokeAndQuery.CreateETAs(stub, amount)
 	} else if functionName == "finaliseTransaction" {
 		transactionID := args[0]
-		timeOfTransaction := args[1]
+		timeOfTransaction, err := strconv.ParseInt(args[1], 10, 64)
+		if err != nil {
+			return nil, errors.New("Couldn't convert string to int, reason: " + err.Error())
+		}
 
 		return nil, invokeAndQuery.FinaliseTrade(stub, transactionID, timeOfTransaction)
 	}
