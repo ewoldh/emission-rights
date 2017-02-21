@@ -1,10 +1,10 @@
-import {Get, Post, JsonController, Body, Req, UseBefore, Param} from 'routing-controllers';
+import {Get, Post, JsonController, Body, Req, UseBefore} from 'routing-controllers';
 import {JSONWebToken} from '../../utils/JSONWebToken';
 import {UserAuthenticatorMiddleware} from '../../middleware/UserAuthenticatorMiddleware';
 import {CORSMiddleware} from '../../middleware/CORSMiddleware';
 import {LoggerFactory} from '../../utils/LoggerFactory';
 import {Service} from 'typedi';
-import {Transaction} from '../../entities/transaction.model';
+// import {Transaction} from '../../entities/transaction.model';
 
 @JsonController('/transactions')
 @UseBefore(UserAuthenticatorMiddleware, CORSMiddleware)
@@ -32,15 +32,15 @@ export class TransactionController {
 
   @Post('/')
   public post(@Body() transactionTest: any, @Req() request: any): any {
-    let transaction = new Transaction(transactionTest.price,
-      transactionTest.volume,
-      transactionTest.seller,
-      transactionTest.dateOfTransaction,
-      transactionTest.buyer,
-      transactionTest.market,
-      transactionTest.requestStatus,
-      transactionTest.transparent
-    );
+    // let transaction = new Transaction(transactionTest.price,
+    //   transactionTest.volume,
+    //   transactionTest.seller,
+    //   transactionTest.dateOfTransaction,
+    //   transactionTest.buyer,
+    //   transactionTest.market,
+    //   transactionTest.requestStatus,
+    //   transactionTest.transparent
+    // );
   }
 
   @Post('/finaliseTransaction/')
