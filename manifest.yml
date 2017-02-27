@@ -12,4 +12,4 @@ applications:
   memory: 64M
   buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
 services:
-- Blockchain-dh
+- Blockchain-ve

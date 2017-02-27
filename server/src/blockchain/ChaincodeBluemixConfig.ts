@@ -17,7 +17,7 @@ export class ChaincodeBluemixConfig {
     // Add users from testdata
     env.network.users = env.network.users.concat(users.map((user: any) => {
           return <UserConfig>{
-            enrollId: user.username,
+            enrollId: user.userID,
             attributes: user.attributes,
             role: 'client',
             affiliation: 'group1'
