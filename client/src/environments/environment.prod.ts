@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://APPNAME-api.eu-gb.mybluemix.net/'
+  apiUrl: 'http://chainO2-api.eu-gb.mybluemix.net/'
 };
